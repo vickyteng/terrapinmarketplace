@@ -13,6 +13,10 @@
 		F1586E5622651B0200992EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5422651B0200992EFC /* Main.storyboard */; };
 		F1586E5822651B0400992EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5722651B0400992EFC /* Assets.xcassets */; };
 		F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5922651B0400992EFC /* LaunchScreen.storyboard */; };
+		F1AAEF762266862D00DCFF41 /* SignUpLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */; };
+		F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */; };
+		F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */; };
+		F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		F1586E5722651B0400992EFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1586E5A22651B0400992EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1586E5C22651B0400992EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpLogin.storyboard; sourceTree = "<group>"; };
+		F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
+		F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +71,20 @@
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
 				F1586E5922651B0400992EFC /* LaunchScreen.storyboard */,
 				F1586E5C22651B0400992EFC /* Info.plist */,
+				F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */,
+				F1AAEF7D2266957300DCFF41 /* SignUpLogin Controllers */,
 			);
 			path = TerpMarketplace;
+			sourceTree = "<group>";
+		};
+		F1AAEF7D2266957300DCFF41 /* SignUpLogin Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */,
+				F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */,
+				F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */,
+			);
+			name = "SignUpLogin Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +148,7 @@
 				F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */,
 				F1586E5822651B0400992EFC /* Assets.xcassets in Resources */,
 				F1586E5622651B0200992EFC /* Main.storyboard in Resources */,
+				F1AAEF762266862D00DCFF41 /* SignUpLogin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +161,10 @@
 			files = (
 				F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */,
 				F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */,
+				F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */,
+				F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */,
 				F1586E5122651B0200992EFC /* ProductListingViewController.swift in Sources */,
+				F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
