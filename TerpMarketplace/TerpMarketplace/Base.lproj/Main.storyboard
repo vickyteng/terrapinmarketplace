@@ -102,6 +102,7 @@
                                             <state key="normal" title="Change" image="geo_fence"/>
                                             <connections>
                                                 <action selector="filterButton:" destination="6My-2l-N9R" eventType="touchUpInside" id="QkF-Xd-GnE"/>
+                                                <segue destination="8IY-Kc-MUT" kind="show" id="cTh-Pn-CZj"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -143,13 +144,13 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OL1-dk-DhI">
                                     <rect key="frame" x="-89.5" y="-18" width="179" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Terrapin Marketplace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9V-2k-dhn" userLabel="Terrapin Marketplace Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terrapin Marketplace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9V-2k-dhn" userLabel="Terrapin Marketplace Label">
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0 Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZF-kA-hxP" userLabel="Products Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZF-kA-hxP" userLabel="Products Label">
                                             <rect key="frame" x="0.0" y="21.5" width="179" height="13.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
@@ -176,6 +177,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1794.4000000000001" y="210.94452773613196"/>
+        </scene>
+        <!--Search By Location View Controller-->
+        <scene sceneID="Gru-ow-ubg">
+            <objects>
+                <viewController id="8IY-Kc-MUT" customClass="SearchByLocationViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bty-sY-WaB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lr-Sq-g6c">
+                                <rect key="frame" x="126" y="113" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Location Services"/>
+                                <connections>
+                                    <action selector="locationServicesOutlet:" destination="8IY-Kc-MUT" eventType="touchUpInside" id="lq8-Sg-Ut6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZK-hG-IVe">
+                                <rect key="frame" x="16" y="197" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KVj-XY-NrN"/>
+                    </view>
+                    <connections>
+                        <outlet property="userLocationLabel" destination="vZK-hG-IVe" id="kFd-vS-7Qg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Th-BF-WNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1794.4000000000001" y="908.9955022488756"/>
         </scene>
         <!--Home Navigation Controller-->
         <scene sceneID="1AI-hz-gR6">
@@ -425,7 +461,7 @@
         <image name="first" width="30" height="30"/>
         <image name="geo_fence" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
-        <image name="nolike" width="25" height="23"/>
+        <image name="nolike" width="104" height="96"/>
         <image name="plus" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
