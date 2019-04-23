@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */; };
+		BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */; };
+		CCD738D519082DC3063E07A2 /* Pods_TerpMarketplace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */; };
 		F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E4E22651B0200992EFC /* AppDelegate.swift */; };
 		F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5022651B0200992EFC /* ItemListingViewController.swift */; };
 		F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5222651B0200992EFC /* SecondViewController.swift */; };
@@ -26,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.debug.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.debug.xcconfig"; sourceTree = "<group>"; };
+		51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TerpMarketplace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.release.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.release.xcconfig"; sourceTree = "<group>"; };
+		BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByLocationViewController.swift; sourceTree = "<group>"; };
+		BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1586E4B22651B0200992EFC /* TerpMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerpMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1586E4E22651B0200992EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1586E5022651B0200992EFC /* ItemListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListingViewController.swift; sourceTree = "<group>"; };
@@ -51,17 +59,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD738D519082DC3063E07A2 /* Pods_TerpMarketplace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C5034137F8060AB8D46BC2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */,
+				90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		873CDB169B57DEBDD50FD5FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F1586E4222651B0100992EFC = {
 			isa = PBXGroup;
 			children = (
 				F1586E4D22651B0200992EFC /* TerpMarketplace */,
 				F1586E4C22651B0200992EFC /* Products */,
+				1C5034137F8060AB8D46BC2E /* Pods */,
+				873CDB169B57DEBDD50FD5FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,10 +105,12 @@
 		F1586E4D22651B0200992EFC /* TerpMarketplace */ = {
 			isa = PBXGroup;
 			children = (
+				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
 				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
 				F1586E5222651B0200992EFC /* SecondViewController.swift */,
 				F1586E5422651B0200992EFC /* Main.storyboard */,
+				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
 				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
 				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
@@ -112,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1586E5F22651B0400992EFC /* Build configuration list for PBXNativeTarget "TerpMarketplace" */;
 			buildPhases = (
+				0863B6CB5A8D0DE1F71B51F9 /* [CP] Check Pods Manifest.lock */,
 				F1586E4722651B0100992EFC /* Sources */,
 				F1586E4822651B0100992EFC /* Frameworks */,
 				F1586E4922651B0100992EFC /* Resources */,
+				3F344121B185F729D1117A0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,12 +198,66 @@
 			files = (
 				F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */,
 				F1586E5822651B0400992EFC /* Assets.xcassets in Resources */,
+				BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */,
 				F1586E5622651B0200992EFC /* Main.storyboard in Resources */,
 				F1AAEF762266862D00DCFF41 /* SignUpLogin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0863B6CB5A8D0DE1F71B51F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TerpMarketplace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F344121B185F729D1117A0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1586E4722651B0100992EFC /* Sources */ = {
@@ -189,6 +276,7 @@
 				F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */,
 				F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */,
 				F1757F742269497C00C7262F /* ItemListingCollectionReusableView.swift in Sources */,
+				BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,10 +420,11 @@
 		};
 		F1586E6022651B0400992EFC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74T892H996;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TerpMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -350,10 +439,11 @@
 		};
 		F1586E6122651B0400992EFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74T892H996;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TerpMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
