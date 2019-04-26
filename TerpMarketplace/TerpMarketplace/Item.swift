@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Item: NSObject {
+/*class Item: NSObject {
     
     var id: String      // product id
     var sellerId: String
@@ -29,3 +29,4 @@ class Item: NSObject {
     
     
 }
+*/

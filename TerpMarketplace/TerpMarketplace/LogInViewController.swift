@@ -7,16 +7,57 @@
 //
 
 import UIKit
-
+import Firebase
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var username: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBAction func loginAction(_ sender: UIButton) {
+        
+        view.endEditing(true)
+        Auth.auth().signIn(withEmail: username.text!, password: password.text!) { (user, Error) in
+            if user != nil{
+                
+                //succesful login
+                print("succesful login")
+            }
+            else
+            {
+                if let myerror = Error?.localizedDescription
+                {
+                    print(myerror)
+                }
+                else
+                {
+                    print("Error")
+                }
+            }
+        }
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureTextFeilds()
+        configureTapGesture()
     }
-    
-
+    private func configureTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func handleTap(){
+        view.endEditing(true)
+    }
+    private func configureTextFeilds(){
+        username.delegate = self
+        password.delegate = self
+    }
     /*
     // MARK: - Navigation
 
@@ -27,4 +68,13 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
 }
