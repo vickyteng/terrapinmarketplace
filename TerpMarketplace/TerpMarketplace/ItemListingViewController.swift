@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+/*class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var numberOfItemsLabel: UILabel!
     
@@ -78,3 +78,4 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
 
 }
 
+*/

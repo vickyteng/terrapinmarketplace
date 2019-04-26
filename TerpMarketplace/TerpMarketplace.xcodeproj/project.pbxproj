@@ -72,7 +72,6 @@
 				19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */,
 				90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,7 +104,6 @@
 		F1586E4D22651B0200992EFC /* TerpMarketplace */ = {
 			isa = PBXGroup;
 			children = (
-				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
 				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
 				F1586E5222651B0200992EFC /* SecondViewController.swift */,
@@ -120,7 +118,7 @@
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
 				F1586E5922651B0400992EFC /* LaunchScreen.storyboard */,
 				F1586E5C22651B0400992EFC /* Info.plist */,
-				F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */,
+				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
 				F1AAEF7D2266957300DCFF41 /* SignUpLogin Controllers */,
 			);
 			path = TerpMarketplace;
@@ -130,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */,
+				F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */,
 				F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */,
 				F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */,
 			);
