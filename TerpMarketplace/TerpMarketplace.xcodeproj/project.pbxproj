@@ -10,6 +10,7 @@
 		BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */; };
 		BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */; };
 		CCD738D519082DC3063E07A2 /* Pods_TerpMarketplace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */; };
+		F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15053D12273462A00F092CD /* PostItemViewController.swift */; };
 		F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E4E22651B0200992EFC /* AppDelegate.swift */; };
 		F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5022651B0200992EFC /* ItemListingViewController.swift */; };
 		F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5222651B0200992EFC /* SecondViewController.swift */; };
@@ -17,7 +18,6 @@
 		F1586E5822651B0400992EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5722651B0400992EFC /* Assets.xcassets */; };
 		F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5922651B0400992EFC /* LaunchScreen.storyboard */; };
 		F1757F6C226939FC00C7262F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F6B226939FC00C7262F /* Item.swift */; };
-		F1757F6E22693B2F00C7262F /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F6D22693B2F00C7262F /* AddItemViewController.swift */; };
 		F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F6F22693C1F00C7262F /* MessageViewController.swift */; };
 		F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F7122693C6200C7262F /* ProfileViewController.swift */; };
 		F1757F742269497C00C7262F /* ItemListingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */; };
@@ -34,6 +34,7 @@
 		90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.release.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.release.xcconfig"; sourceTree = "<group>"; };
 		BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByLocationViewController.swift; sourceTree = "<group>"; };
 		BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F15053D12273462A00F092CD /* PostItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemViewController.swift; sourceTree = "<group>"; };
 		F1586E4B22651B0200992EFC /* TerpMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerpMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1586E4E22651B0200992EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1586E5022651B0200992EFC /* ItemListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListingViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		F1586E5A22651B0400992EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1586E5C22651B0400992EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1757F6B226939FC00C7262F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		F1757F6D22693B2F00C7262F /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		F1757F6F22693C1F00C7262F /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		F1757F7122693C6200C7262F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListingCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -72,7 +72,6 @@
 				19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */,
 				90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -114,7 +113,7 @@
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
 				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
 				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
-				F1757F6D22693B2F00C7262F /* AddItemViewController.swift */,
+				F15053D12273462A00F092CD /* PostItemViewController.swift */,
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
@@ -271,7 +270,7 @@
 				F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */,
 				F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */,
 				F1757F6C226939FC00C7262F /* Item.swift in Sources */,
-				F1757F6E22693B2F00C7262F /* AddItemViewController.swift in Sources */,
+				F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */,
 				F1757F7622694CD400C7262F /* User.swift in Sources */,
 				F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */,
 				F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */,
