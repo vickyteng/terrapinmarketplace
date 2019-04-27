@@ -11,7 +11,7 @@ import Firebase
 
 class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    // MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UITextField!
     @IBOutlet weak var productDescription: UITextField!
@@ -21,15 +21,24 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var postButton: UIButton!
     
-    // MARK: Variables
+    // MARK: - Variables
     let root = Database.database().reference()
     //let storageRef = Storage.storage.reference()    // need for image
     var imagePicker: UIImagePickerController!
     var sellerId: String = ""
     var imageUrl: String = ""
-    // Store item in overall and in personal
     
-    // MARK: Actions
+    // MARK: - Actions
+    @IBAction func nextButtonAction(_ sender: UIButton) {
+        performSegue(withIdentifier: "segueToAddDetails", sender: self)
+    }
+    
+    // Need to send image to segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destVC = segue.destination as! PostItemViewController
+//        destVC.productImage = productImage;
+//    }
+    
     @IBAction func postAction(_ sender: UIButton) {
         
         // retrieve seller ID from firebase
@@ -37,24 +46,55 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let newItem: [String: Any] = [
             "sellerId": sellerId,
-            "name": productName,
-            "price": productPrice,
-            "details": productDescription,
-            "location": productLocation,
+            "name": productName.text!,
+            "price": productPrice.text!,
+            "details": productDescription.text!,
+            "location": productLocation.text!,
             "forSale": true,
             "createdTimestamp": ServerValue.timestamp(),
             "imageUrl": imageUrl
         ]
         
-        self.root.child("allItems").childByAutoId().setValue(newItem);
+        saveNewItem(newItem) { (itemRef) in
+            self.saveNewItemToUser(itemId: itemRef.key!, sellerId: self.sellerId, item: newItem)
+        }
+        
+        // Segue back
+        let alert = UIAlertController.init(title: "Item Posted", message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "awesome!!", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: segueBackToHome)
     }
     
-    @IBAction func addImage(_ sender: UITapGestureRecognizer) {
+    // MARK: - Functions
+    
+    func segueBackToHome() {
+        self.performSegue(withIdentifier: "segueToMain", sender: self)
+    }
+    
+    // Saves item in /allItems, then returns item reference on completion
+    func saveNewItem(_ newItem: [String: Any], completion: @escaping (DatabaseReference) -> Void) {
+        // Save in all items
+        self.root.child("allItems").childByAutoId().setValue(newItem) { (error, itemRef) in
+            if error != nil {
+                print("Error saving new item")
+            }
+            completion(itemRef)
+        }
+    }
+    
+    func saveNewItemToUser(itemId: String, sellerId: String, item: [String: Any]) {
+        // Save under user
+        self.root.child("users/\(sellerId)/selling/\(itemId)").setValue(item)
+    }
+    
+    @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
+        print("pressed image")
         let alert = UIAlertController.init(title: "Upload Image", message: "", preferredStyle: .alert)
         let addImage = UIAlertAction(title: "Photo Library", style: .default) {
             action -> Void in
             
-            
+            // TODO: fix error here
             self.imagePicker.sourceType = .photoLibrary
             
             
@@ -84,12 +124,20 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addImage))
-        productImage.addGestureRecognizer(tap)
+        // Only perform if on addImage page
+        if (self.restorationIdentifier == "AddImageViewController") {
+            addTapGesture();
+        }
         
-        // Do any additional setup after loading the view.
     }
     
+    // MARK: - Add Gestures
+    func addTapGesture() {
+        let tapImage: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostItemViewController.tapToAddImage))
+        productImage.isUserInteractionEnabled = true;
+        tapImage.numberOfTapsRequired = 1;
+        productImage.addGestureRecognizer(tapImage);
+    }
 
     /*
     // MARK: - Navigation
