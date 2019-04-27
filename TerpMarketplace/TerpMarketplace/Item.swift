@@ -21,10 +21,6 @@ class Item {
     //var location: CLLocation?
     var ref: DatabaseReference
     
-    override init() {
-        super.init()
-    }
-    
     init(snapshot: DataSnapshot) {
         let data = snapshot.value as! Dictionary<String, AnyObject>
    
@@ -39,3 +35,4 @@ class Item {
     
     
 }
+

@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
+
 // Only list items that are forSale, go thru each
+
 class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var numberOfItemsLabel: UILabel!
@@ -97,4 +99,5 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
 
 
 }
+
 
