@@ -12,11 +12,11 @@ import Firebase
 class Item {
     
     var sellerId: String!
-    var itemId: String!
+    //var itemId: String!
     var name: String!
     var price: Float!
     var details: String!
-    var image: UIImage
+    //var image: UIImage
     var forSale: Bool! = true       // false if sold
     //var location: CLLocation?
     var ref: DatabaseReference

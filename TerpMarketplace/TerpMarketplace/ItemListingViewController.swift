@@ -37,18 +37,26 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if items.count == 0 {
+            print("no items")
             UIView.animate(withDuration: 0.25, animations: {
                 self.noItemsView.alpha = 1.0
+                self.collectionView.alpha = 0.0
             })
         } else {
+            self.collectionView.alpha = 1.0
             self.noItemsView.alpha = 0.0
         }
         
         return items.count
     }
     
+    // TODO: change add product name, image, and price for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        
+        //let cell = ProductCell();
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell;
+        // cell.productName.text = items[indexPath.row]
+        return cell;
     }
     
     // If user put in query
@@ -98,6 +106,14 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     }
 
 
+}
+
+// MARK: - ProductCollectionViewCell class
+// TODO: Need to connect outlets
+class ProductCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var productPrice: UILabel!
 }
 
 
