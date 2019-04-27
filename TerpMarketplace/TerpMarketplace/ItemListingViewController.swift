@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
-/*class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+
+// Only list items that are forSale, go thru each
+
+class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var numberOfItemsLabel: UILabel!
     
@@ -16,6 +20,7 @@ import UIKit
     @IBOutlet weak var noItemsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var root = Database.database().reference();
     var items : [Item] = [];                // all items
     var itemSearch : [Item] = [];           // items from user query
     var totalNumberOfItems = 0 {            // Number of products for sale
@@ -73,9 +78,26 @@ import UIKit
         if let navBar = navigationController?.navigationBar {
             navBar.clipsToBounds = true;
         }
+        
+        startObserving();
+    }
+    
+    
+    // Observer - retrieves new entries in database and updates view
+    func startObserving() {
+        root.child("allItems").observe(.value, with: {(snap) in
+            var newItems = [Item]()
+            
+            for itemSnaps in snap.children {
+                let item = Item(snapshot: itemSnaps as! DataSnapshot)
+                newItems.append(item)
+            }
+            self.items = newItems
+            self.collectionView.reloadData()
+        })
     }
 
 
 }
 
-*/
+
