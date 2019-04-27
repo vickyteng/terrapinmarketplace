@@ -23,6 +23,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     // MARK: Variables
     let root = Database.database().reference()
+    //let storageRef = Storage.storage.reference()    // need for image
     var imagePicker: UIImagePickerController!
     var sellerId: String = ""
     var imageUrl: String = ""
@@ -30,8 +31,9 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     // MARK: Actions
     @IBAction func postAction(_ sender: UIButton) {
-        // need to retrieve seller ID
-        // retrieve image URL
+        
+        // retrieve seller ID from firebase
+        sellerId = Auth.auth().currentUser!.uid
         
         let newItem: [String: Any] = [
             "sellerId": sellerId,

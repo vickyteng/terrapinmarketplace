@@ -16,6 +16,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    var error = "" {
+        didSet {
+            errorLabel.text = error
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +31,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         lastNameText.delegate = self
         usernameText.delegate = self
         passwordText.delegate = self
+        error = ""
         
         configureTapGesture()
         
         // Do any additional setup after loading the view.
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
-    private func configureTapGesture(){
+    
+    private func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
     }
-    @objc func handleTap(){
+    
+    @objc func handleTap() {
         view.endEditing(true)
     }
     
@@ -63,17 +74,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
  
               */
                 //succesful sign up
-                print("succesful signup")
+                self.error = "Successful Signup"
+                
+                self.performSegue(withIdentifier: "login", sender: self)
             }
             else
             {
                 if let myerror = Error?.localizedDescription
                 {
-                    print(myerror)
+                    self.error = myerror
                 }
                 else
                 {
-                    print("Error")
+                    self.error = "Error"
                 }
             }
         }
