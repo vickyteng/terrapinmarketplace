@@ -12,7 +12,7 @@ import Firebase
 class Item {
     
     var sellerId: String!
-    //var itemId: String!
+    var itemId: String!
     var name: String!
     var price: Int!
     var details: String!
@@ -23,7 +23,7 @@ class Item {
     
     init(snapshot: DataSnapshot) {
         let data = snapshot.value as! Dictionary<String, AnyObject>
-   
+        
         name = data["name"] as? String
         price = data["price"]?.integerValue ?? 0
         details = data["details"] as? String

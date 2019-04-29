@@ -53,15 +53,18 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     // TODO: change image for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell;
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell;
         let item = items[indexPath.row]
         
         cell.productName.text = item.name!
         cell.productPrice.text = "$\(item.price!)"
         
+        userLiked(item: item, cell: cell)
+        
         return cell;
     }
     
+    // MARK: Collection View Delegate
     // Setup search bar and filter button views
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -72,6 +75,17 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         }
         
         return UICollectionReusableView()
+    }
+    
+    // Send itemId to ItemCell
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let itemCell = cell as? ItemCollectionViewCell {
+            if indexPath.row >= 0 && indexPath.row < items.count {
+                itemCell.itemId = items[indexPath.row].itemId
+            } else {
+                collectionView.reloadData()
+            }
+        }
     }
     
     // MARK: - Search Bar methods
@@ -128,6 +142,29 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    // MARK: - Helper Functions
+    
+    // Returns true if user likes item
+    private func userLiked(item: Item, cell: ItemCollectionViewCell) {
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            let likedItems = self.root.child("users").child(userId).child("likes")
+            
+            likedItems.observeSingleEvent(of: .value, with: { snap in
+                
+                for itemSnaps in snap.children {
+                    let i = itemSnaps as! DataSnapshot
+
+                    if i.exists() && i.key == item.itemId! {
+                        cell.likeButton.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+                        
+                    }
+                }
+            })
+            
+        }
+    }
+    
     // MARK: - Observers
     // Observer - retrieves new entries in database and updates view
     func startObserving() {
@@ -136,6 +173,10 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
             
             for itemSnaps in snap.children {
                 let item = Item(snapshot: itemSnaps as! DataSnapshot)
+                
+                let i = itemSnaps as! DataSnapshot // Get id of item
+                item.itemId = i.key
+                
                 newItems.append(item)
             }
             self.items = newItems
@@ -153,20 +194,66 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
 
 
 
-// MARK: - ProductCollectionViewCell class
-// TODO: Need to connect outlets
-class ProductCollectionViewCell: UICollectionViewCell {
+// MARK: - ItemCollectionViewCell class
+class ItemCollectionViewCell: UICollectionViewCell {
     
-    // MARK: ProductCell outlets
+    // MARK: ItemCell outlets
     
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    
+    var root = Database.database().reference();
+    var itemId: String!
+    var likesItem = false;
+    
     @IBAction func likeButtonAction(_ sender: UIButton) {
         
+        if let userId = Auth.auth().currentUser?.uid {
+            doesUserLike()
+            
+            // User already likes -> Unlike
+            if likesItem == true {
+                print("setting not pink heart")
+                self.likeButton.setImage(#imageLiteral(resourceName: "nolike"), for: .normal)
+                
+                // Remove from database
+                let itemLikedRef = self.root.child("users").child(userId).child("likes");
+                
+                itemLikedRef.child(self.itemId!).removeValue()
+                
+                
+            // User does not like yet -> Like
+            } else {
+                print("Setting pink heart")
+                self.likeButton.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+                
+                // Save in database
+                root.child("users/\(userId)/likes/\(itemId!)").setValue("me likey")
+            }
+        }
     }
     
-    
+    // Checks database if user already likes the product or not
+    // Modifies likesItem var
+    private func doesUserLike() {
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            
+            let likedItems = self.root.child("users").child(userId).child("likes")
+
+            likedItems.observeSingleEvent(of: .value, with: { snap in
+                
+                for itemSnaps in snap.children {
+                    let i = itemSnaps as! DataSnapshot
+                    
+                    if i.exists() && i.key == self.itemId {
+                        self.likesItem = true;
+                    }
+                }
+            })
+            
+        }
+        
+    }
 }
-
-
