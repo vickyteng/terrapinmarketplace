@@ -62,19 +62,51 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         return cell;
     }
     
-    // If user put in query
+    // Setup search bar and filter button views
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ItemListingHeader", for: indexPath)
+            
+            return headerView
+        }
+        
+        return UICollectionReusableView()
+    }
+    
+    // MARK: - Search Bar methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let indexPath = IndexPath(row: 0, section: 0)
         if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as? ItemListingCollectionReusableView {
             
             header.searchBar.resignFirstResponder()
             
+            if(!(searchBar.text?.isEmpty)!){
+                //reload your data source if necessary
+                self.collectionView?.reloadData()
+            }
+            
             // empty itemSearch
             // query DB, append to itemSearch
             // update view
         }
-        
-        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let indexPath = IndexPath(row: 0, section: 0)
+        if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as? ItemListingCollectionReusableView {
+            
+            header.searchBar.resignFirstResponder()
+            
+            if(searchText.isEmpty){
+                //reload your data source if necessary
+                self.collectionView?.reloadData()
+            }
+            
+            // empty itemSearch
+            // query DB, append to itemSearch
+            // update view
+        }
     }
 
     override func viewDidLoad() {
@@ -118,6 +150,8 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
 
 
 }
+
+
 
 // MARK: - ProductCollectionViewCell class
 // TODO: Need to connect outlets
