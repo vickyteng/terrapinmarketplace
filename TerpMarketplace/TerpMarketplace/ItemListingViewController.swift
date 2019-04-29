@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  ItemListingViewController.swift
 //  TerpMarketplace
 //
 //  Created by Victoria Teng on 4/15/19.
@@ -14,8 +14,8 @@ import Firebase
 
 class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
+    // MARK: Outlets
     @IBOutlet weak var numberOfItemsLabel: UILabel!
-    
     @IBOutlet weak var noItemsView: UIView!
     @IBOutlet weak var noItemsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -36,26 +36,29 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        // Need to keep collection view showing for search bar
         if items.count == 0 {
             print("no items")
             UIView.animate(withDuration: 0.25, animations: {
                 self.noItemsView.alpha = 1.0
-                self.collectionView.alpha = 0.0
             })
         } else {
-            self.collectionView.alpha = 1.0
             self.noItemsView.alpha = 0.0
         }
         
         return items.count
     }
     
-    // TODO: change add product name, image, and price for each cell
+    // TODO: change image for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //let cell = ProductCell();
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell;
-        // cell.productName.text = items[indexPath.row]
+        let item = items[indexPath.row]
+        
+        cell.productName.text = item.name!
+        cell.productPrice.text = "$\(item.price!)"
+        
         return cell;
     }
     
@@ -80,17 +83,20 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         collectionView.dataSource = self;
         collectionView.delegate = self;
         
+        totalNumberOfItems = 0;
+        
+        startObserving();
+        
+        // Layout items depending on number of items available
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout;
         layout.itemSize = CGSize(width: floor(view.frame.width * (190/414)), height: 230)
         
         if let navBar = navigationController?.navigationBar {
             navBar.clipsToBounds = true;
         }
-        
-        startObserving();
     }
     
-    
+    // MARK: - Observers
     // Observer - retrieves new entries in database and updates view
     func startObserving() {
         root.child("allItems").observe(.value, with: {(snap) in
@@ -101,8 +107,13 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 newItems.append(item)
             }
             self.items = newItems
+            self.totalNumberOfItems = self.items.count
             self.collectionView.reloadData()
         })
+    }
+    
+    func searchObservation() {
+        
     }
 
 
@@ -112,8 +123,16 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
 // TODO: Need to connect outlets
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var productName: UILabel!
+    // MARK: ProductCell outlets
+    
     @IBOutlet weak var productPrice: UILabel!
+    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBAction func likeButtonAction(_ sender: UIButton) {
+        
+    }
+    
+    
 }
 
 
