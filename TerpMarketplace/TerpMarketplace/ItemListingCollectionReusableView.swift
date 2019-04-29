@@ -13,7 +13,7 @@ class ItemListingCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterButtonOutlet: UIButton!
     @IBAction func filterButton(_ sender: UIButton) {
-        
+        print("filter button pressed")
     }
     
     
