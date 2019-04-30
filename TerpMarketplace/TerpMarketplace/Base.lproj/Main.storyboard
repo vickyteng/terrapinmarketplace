@@ -90,7 +90,7 @@
                                     <subviews>
                                         <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-1R-UUI">
                                             <rect key="frame" x="0.0" y="3" width="355.5" height="47"/>
-                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <outlet property="delegate" destination="mNM-wZ-muV" id="xkt-2U-WDf"/>
                                             </connections>

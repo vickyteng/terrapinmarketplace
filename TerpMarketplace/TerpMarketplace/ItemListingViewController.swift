@@ -97,6 +97,26 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     
     // MARK: - Search Bar methods
     
+    // Displays Cancel button after user types
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true;
+        
+        if let cancelButton = searchBar.subviews.first?.subviews.last as? UIButton {
+            cancelButton.setTitleColor(UIColor.yellow, for: .normal)
+        }
+    }
+    
+    // When cancel button is clicked, hide button and close keyboard
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        
+        searchBar.text = ""
+        itemsUserSee = items;
+        
+        viewingNumberOfItems = itemsUserSee.count;
+        self.collectionView?.reloadData()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let indexPath = IndexPath(row: 0, section: 0)
         if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as? ItemListingCollectionReusableView {
@@ -109,15 +129,12 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 itemsUserSee = items;
             } else {
                 
-                // empty itemsUserSee
                 itemsUserSee = []
                 
-                // query DB, append to itemSearch
-                // update view
+                // go thru items, retrieve name; lowercase both entry and db
                 for item in items {
                     let itm = item.name.lowercased()
                     let searchTxt = searchQuery?.lowercased()
-                    // go thru items, retrieve name; lowercase both entry and db
                     if itm.hasPrefix(searchTxt!) {
                         itemsUserSee.append(item)
                     }
@@ -128,7 +145,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 }
             }
             
-            //viewingNumberOfItems = itemsUserSee.count;
+            viewingNumberOfItems = itemsUserSee.count;
             self.collectionView?.reloadData()
         }
     }
@@ -154,6 +171,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         if let navBar = navigationController?.navigationBar {
             navBar.clipsToBounds = true;
         }
+        
     }
     
     // MARK: - Helper Functions
@@ -255,6 +273,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
         searchObserver()
     }
     
+    // MARK: - Observer
+    
     private func searchObserver() {
         self.root.child("users").observe(.value, with: {(snap) in
             for userSnaps in snap.children {
@@ -267,6 +287,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         })
     }
     
+    // MARK: Helper
     // Checks database if user already likes the product or not
     // Modifies likesItem var
     private func doesUserLike() {
