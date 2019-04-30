@@ -21,6 +21,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var collectionView: UICollectionView!
     
     var root = Database.database().reference();
+    var itemsUserSee : [Item] = []
     var items : [Item] = [];                // all items
     var itemSearch : [Item] = [];           // items from user query
     var totalNumberOfItems = 0 {            // Number of products for sale
@@ -64,7 +65,9 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         return cell;
     }
     
-    // MARK: Collection View Delegate
+    
+    // MARK: - Collection View Delegate
+    
     // Setup search bar and filter button views
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -88,8 +91,11 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    
     // MARK: - Search Bar methods
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("hello???")
         let indexPath = IndexPath(row: 0, section: 0)
         if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as? ItemListingCollectionReusableView {
             
@@ -106,20 +112,36 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
         let indexPath = IndexPath(row: 0, section: 0)
         if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as? ItemListingCollectionReusableView {
             
             header.searchBar.resignFirstResponder()
-            
+            print(searchText)
             if(searchText.isEmpty){
                 //reload your data source if necessary
                 self.collectionView?.reloadData()
+                print("in here")
             }
             
             // empty itemSearch
             // query DB, append to itemSearch
             // update view
+            
+            // this is slow...
+            for item in items {
+                var itm = item.name.lowercased()
+                var searchTxt = searchText.lowercased()
+                // go thru items, retrieve name; lowercase both entry and db
+                print(itm)
+                print(searchTxt)
+                if itm.hasPrefix(searchTxt) {
+                    print("yerrrr")
+                }
+            }
         }
     }
 
@@ -169,6 +191,8 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     // Observer - retrieves new entries in database and updates view
     func startObserving() {
         root.child("allItems").observe(.value, with: {(snap) in
+            
+            print("Observing all items")
             var newItems = [Item]()
             
             for itemSnaps in snap.children {
@@ -184,11 +208,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
             self.collectionView.reloadData()
         })
     }
-    
-    func searchObservation() {
-        
-    }
-
 
 }
 
@@ -206,6 +225,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
     var root = Database.database().reference();
     var itemId: String!
     var likesItem = false;
+    var searchText: String!
+    var itemsId: [String] = []
     
     @IBAction func likeButtonAction(_ sender: UIButton) {
         
@@ -234,26 +255,33 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib();
+        
+        searchObserver()
+    }
+    
+    private func searchObserver() {
+        print("About to observe")
+        self.root.child("users").observe(.value, with: {(snap) in
+            for userSnaps in snap.children {
+                let u = User(snapshot: userSnaps as! DataSnapshot)
+                
+                // Returns updated item ids that user likes
+                self.itemsId = u.itemIds
+            }
+            
+        })
+    }
+    
     // Checks database if user already likes the product or not
     // Modifies likesItem var
     private func doesUserLike() {
         
-        if let userId = Auth.auth().currentUser?.uid {
-            
-            let likedItems = self.root.child("users").child(userId).child("likes")
-
-            likedItems.observeSingleEvent(of: .value, with: { snap in
-                
-                for itemSnaps in snap.children {
-                    let i = itemSnaps as! DataSnapshot
-                    
-                    if i.exists() && i.key == self.itemId {
-                        self.likesItem = true;
-                    }
-                }
-            })
-            
+        if itemsId.contains(self.itemId) {
+            self.likesItem = true;
+        } else {
+            self.likesItem = false;
         }
-        
     }
 }
