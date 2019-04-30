@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
-class User: NSObject {
+class User {
     
-    var userId: String
-    var fName: String
-    var lName: String
+    var userId: String!
+    var fName: String!
+    var lName: String!
+    var itemIds: [String]
+    var ref: DatabaseReference!
     
-    init(uid: String, firstName: String, lastName: String) {
-        self.userId = uid;
-        self.fName = firstName;
-        self.lName = lastName;
+    init(snapshot: DataSnapshot) {
+        let data = snapshot.value as! Dictionary<String, AnyObject>
+        var items: Dictionary<String, AnyObject>
+        itemIds = []
+        
+        items = data["likes"] as? Dictionary<String, AnyObject> ?? [:]
+        for k in items.keys {
+            itemIds.append(k)
+        }
+        
+        ref = snapshot.ref;
     }
 }
