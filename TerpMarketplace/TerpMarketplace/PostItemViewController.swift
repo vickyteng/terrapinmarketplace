@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import Firebase
 
-class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var productImage: UIImageView!
@@ -127,8 +127,31 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
                 // Resets image
                 productImage.image = UIImage(named: "addphoto.png")
             }
+            if id == "AddDetailsViewController" {
+                productName.delegate = self
+                productDescription.delegate = self
+                productPrice.delegate = self
+                productLocation.delegate = self
+                
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == productName { // Switch focus to other text field
+            productDescription.becomeFirstResponder()
+            
+        } else if textField == productDescription {
+            productPrice.becomeFirstResponder()
+            
+        } else if textField == productPrice {
+            productLocation.becomeFirstResponder()
+            
         }
         
+        return true
     }
     
     // MARK: - Add Gestures
