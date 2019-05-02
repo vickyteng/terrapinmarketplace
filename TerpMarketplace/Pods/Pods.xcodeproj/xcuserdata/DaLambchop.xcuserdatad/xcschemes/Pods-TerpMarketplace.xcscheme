@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0AF863F7DFF0A84B0E7B9FA7084B4398"
+               BlueprintIdentifier = "CA0758FB75AD0B86BEC90ACE06051399"
                BuildableName = "Pods_TerpMarketplace.framework"
                BlueprintName = "Pods-TerpMarketplace"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0AF863F7DFF0A84B0E7B9FA7084B4398"
+            BlueprintIdentifier = "CA0758FB75AD0B86BEC90ACE06051399"
             BuildableName = "Pods_TerpMarketplace.framework"
             BlueprintName = "Pods-TerpMarketplace"
             ReferencedContainer = "container:Pods.xcodeproj">

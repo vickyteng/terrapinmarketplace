@@ -275,6 +275,35 @@
             </objects>
             <point key="canvasLocation" x="-215.94202898550725" y="187.5"/>
         </scene>
+        <!--Chat-->
+        <scene sceneID="Ps6-nc-B76">
+            <objects>
+                <tableViewController id="HNh-aH-4BL" customClass="ChannelsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZsW-sJ-lHi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CU2-zC-D4e">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CU2-zC-D4e" id="waw-Pv-g7a">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HNh-aH-4BL" id="QIb-et-CWw"/>
+                            <outlet property="delegate" destination="HNh-aH-4BL" id="Mpe-qI-KMM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Chat" id="1Fe-SK-H28"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsk-a9-2mx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="188"/>
+        </scene>
         <!--Add Item Details View Controller-->
         <scene sceneID="rT3-Gk-Iwl">
             <objects>
@@ -381,22 +410,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8Q-Y4-kS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-215" y="-576"/>
-        </scene>
-        <!--Message View Controller-->
-        <scene sceneID="mke-31-lsA">
-            <objects>
-                <viewController id="xte-W6-KDn" userLabel="Message View Controller" customClass="MessageViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d7Y-gn-Wt2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="KM3-eW-90h"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xhy-8P-hfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="548" y="-576"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="8XS-BH-C5v">
@@ -513,7 +526,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="diV-N0-mfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="-576"/>
+            <point key="canvasLocation" x="1358" y="-577"/>
         </scene>
         <!--Suggested-->
         <scene sceneID="wg7-f3-ORb">
@@ -565,13 +578,32 @@
                         <segue destination="NVB-JG-B0i" kind="relationship" relationship="viewControllers" id="dnF-39-uG5"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Rij-YM-19q" kind="relationship" relationship="viewControllers" id="7DW-gz-dd5"/>
-                        <segue destination="xte-W6-KDn" kind="relationship" relationship="viewControllers" id="Vzc-8m-dat"/>
+                        <segue destination="gGp-H4-ap1" kind="relationship" relationship="viewControllers" id="Vzc-8m-dat"/>
                         <segue destination="FkD-hW-GER" kind="relationship" relationship="viewControllers" id="aT4-eu-Fed"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-215" y="-1464"/>
+        </scene>
+        <!--Messages-->
+        <scene sceneID="G4G-fn-9rD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gGp-H4-ap1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N7L-NW-Adi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HNh-aH-4BL" kind="relationship" relationship="rootViewController" id="Y3M-Ya-Zki"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PD-TF-BBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="547.82608695652175" y="-576.5625"/>
         </scene>
     </scenes>
     <resources>
@@ -580,7 +612,7 @@
         <image name="first" width="30" height="30"/>
         <image name="geo_fence" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
-        <image name="nolike" width="25" height="23"/>
+        <image name="nolike" width="104" height="96"/>
         <image name="plus" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
