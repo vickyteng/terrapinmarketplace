@@ -85,7 +85,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if let itemCell = cell as? ItemCollectionViewCell {
-            print(indexPath)
             if indexPath.row >= 0 && indexPath.row < items.count {
                 itemCell.itemId = itemsUserSee[indexPath.row].itemId
             } else {
@@ -219,6 +218,10 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
             
             self.collectionView.reloadData()
         })
+    }
+    
+    deinit {
+        root.removeAllObservers();
     }
 
 }

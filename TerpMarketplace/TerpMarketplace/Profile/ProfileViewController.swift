@@ -16,6 +16,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileOptionTableView: UITableView!
     
+    let root = Database.database().reference();
+    var currUser: User!
+    var allItems: [Item]!
+    
     let sections: [String] = [
         "Saved Items",
         "Selling",
@@ -29,13 +33,40 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Setup delegate methods for TableView
         profileOptionTableView.delegate = self
         profileOptionTableView.dataSource = self
+        
+        retrieveUserInfo();
+        getAllItems();
     }
     
-    /*
-    func getUserInfo() {
-        
+    private func retrieveUserInfo() {
+        if let userId = Auth.auth().currentUser?.uid {
+            self.root.child("users").child(userId).observe(.value, with: {(snap) in
+            
+                let user = User(snapshot: snap)
+                
+                self.currUser = user
+                self.currUser.userId = snap.key
+            })
+        }
     }
- */
+    
+    private func getAllItems(){
+        root.child("allItems").observe(.value, with: {(snap) in
+            
+            var newItems = [Item]()
+            
+            for itemSnaps in snap.children {
+                let item = Item(snapshot: itemSnaps as! DataSnapshot)
+                
+                let i = itemSnaps as! DataSnapshot // Get id of item
+                item.itemId = i.key
+                
+                newItems.append(item)
+            }
+            
+            self.allItems = newItems
+        })
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections.count
@@ -56,16 +87,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return tableView.frame.height / CGFloat(sections.count)
     }
     
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        // Send user information & chosen cell to segue
+        if segue.identifier == "segueToProfileOption" {
+            let profileOptionViewController = segue.destination as! ProfileOptionViewController
+            
+            if let row = profileOptionTableView.indexPathForSelectedRow?.row {
+            
+                profileOptionViewController.optionToView = sections[row]
+                profileOptionViewController.user = self.currUser
+                profileOptionViewController.allItems = self.allItems
+            } else {
+                print("something went wrong")
+            }
+        }
     }
-    */
 
 }
 

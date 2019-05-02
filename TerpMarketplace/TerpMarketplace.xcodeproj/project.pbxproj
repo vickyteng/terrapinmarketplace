@@ -13,6 +13,7 @@
 		F100A92422765B6600DFC475 /* addphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92322765B6500DFC475 /* addphoto.png */; };
 		F100A92622765B9200DFC475 /* noheart.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92522765B9200DFC475 /* noheart.png */; };
 		F100A92822765BA100DFC475 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92722765BA100DFC475 /* heart.png */; };
+		F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */; };
 		F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15053D12273462A00F092CD /* PostItemViewController.swift */; };
 		F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E4E22651B0200992EFC /* AppDelegate.swift */; };
 		F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5022651B0200992EFC /* ItemListingViewController.swift */; };
@@ -28,6 +29,7 @@
 		F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */; };
 		F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */; };
 		F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */; };
+		F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,7 @@
 		F100A92322765B6500DFC475 /* addphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addphoto.png; sourceTree = "<group>"; };
 		F100A92522765B9200DFC475 /* noheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noheart.png; sourceTree = "<group>"; };
 		F100A92722765BA100DFC475 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionViewController.swift; sourceTree = "<group>"; };
 		F15053D12273462A00F092CD /* PostItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemViewController.swift; sourceTree = "<group>"; };
 		F1586E4B22651B0200992EFC /* TerpMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerpMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1586E4E22651B0200992EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
 		F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,12 +124,12 @@
 			children = (
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
-				F1586E5222651B0200992EFC /* SecondViewController.swift */,
-				F1586E5422651B0200992EFC /* Main.storyboard */,
 				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
-				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
-				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
+				F1586E5222651B0200992EFC /* SecondViewController.swift */,
 				F15053D12273462A00F092CD /* PostItemViewController.swift */,
+				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
+				F1AD4F29227B4E9200B24A99 /* Profile */,
+				F1586E5422651B0200992EFC /* Main.storyboard */,
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
@@ -147,6 +151,16 @@
 				F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */,
 			);
 			name = "SignUpLogin Controllers";
+			sourceTree = "<group>";
+		};
+		F1AD4F29227B4E9200B24A99 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
+				F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */,
+				F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,12 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */,
+				F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */,
 				F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */,
 				F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */,
 				F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */,
 				F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */,
 				F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */,
 				F1757F6C226939FC00C7262F /* Item.swift in Sources */,
+				F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */,
 				F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */,
 				F1757F7622694CD400C7262F /* User.swift in Sources */,
 				F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */,
