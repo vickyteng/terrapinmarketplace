@@ -14,17 +14,24 @@ class User {
     var userId: String!
     var fName: String!
     var lName: String!
-    var itemIds: [String]
+    var itemIds: [String]       // itemIds of items that user likes
+    var sellingItemIds: [String]
     var ref: DatabaseReference!
     
     init(snapshot: DataSnapshot) {
         let data = snapshot.value as! Dictionary<String, AnyObject>
         var items: Dictionary<String, AnyObject>
         itemIds = []
+        sellingItemIds = []
         
         items = data["likes"] as? Dictionary<String, AnyObject> ?? [:]
         for k in items.keys {
             itemIds.append(k)
+        }
+        
+        items = data["selling"] as? Dictionary<String, AnyObject> ?? [:]
+        for k in items.keys {
+            sellingItemIds.append(k)
         }
         
         ref = snapshot.ref;
