@@ -18,6 +18,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBAction func login(_ sender: UIButton) {
+        performSegue(withIdentifier: "login", sender: self)
+    }
+    
     var error = "" {
         didSet {
             errorLabel.text = error
