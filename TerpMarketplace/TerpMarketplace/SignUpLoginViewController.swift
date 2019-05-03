@@ -10,6 +10,16 @@ import UIKit
 
 class SignUpLoginViewController: UIViewController {
 
+    
+    @IBAction func signUp(_ sender: UIButton) {
+        performSegue(withIdentifier: "signup", sender: self)
+    }
+    
+    @IBAction func login(_ sender: UIButton) {
+        performSegue(withIdentifier: "login", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+
+
+// Only list items that are forSale, go thru each
 
 class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
@@ -16,6 +20,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var noItemsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var root = Database.database().reference();
     var items : [Item] = [];                // all items
     var itemSearch : [Item] = [];           // items from user query
     var totalNumberOfItems = 0 {            // Number of products for sale
@@ -32,18 +37,26 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if items.count == 0 {
+            print("no items")
             UIView.animate(withDuration: 0.25, animations: {
                 self.noItemsView.alpha = 1.0
+                self.collectionView.alpha = 0.0
             })
         } else {
+            self.collectionView.alpha = 1.0
             self.noItemsView.alpha = 0.0
         }
         
         return items.count
     }
     
+    // TODO: change add product name, image, and price for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        
+        //let cell = ProductCell();
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell;
+        // cell.productName.text = items[indexPath.row]
+        return cell;
     }
     
     // If user put in query
@@ -73,8 +86,34 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         if let navBar = navigationController?.navigationBar {
             navBar.clipsToBounds = true;
         }
+        
+        startObserving();
+    }
+    
+    
+    // Observer - retrieves new entries in database and updates view
+    func startObserving() {
+        root.child("allItems").observe(.value, with: {(snap) in
+            var newItems = [Item]()
+            
+            for itemSnaps in snap.children {
+                let item = Item(snapshot: itemSnaps as! DataSnapshot)
+                newItems.append(item)
+            }
+            self.items = newItems
+            self.collectionView.reloadData()
+        })
     }
 
 
 }
+
+// MARK: - ProductCollectionViewCell class
+// TODO: Need to connect outlets
+class ProductCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var productPrice: UILabel!
+}
+
 

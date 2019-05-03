@@ -7,13 +7,53 @@
 //
 
 import UIKit
+import Firebase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var userDetailView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileOptionTableView: UITableView!
+    
+    let sections: [String] = [
+        "Saved Items",
+        "Selling",
+        "Sold",
+        "Settings"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup delegate methods for TableView
+        profileOptionTableView.delegate = self
+        profileOptionTableView.dataSource = self
+    }
+    
+    /*
+    func getUserInfo() {
+        
+    }
+ */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "optionCell", for: indexPath) as! OptionCell;
+        cell.label.text = sections[indexPath.row]
+        return cell;
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // Configure size of each cell
+    @objc(tableView:heightForRowAtIndexPath:) func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / CGFloat(sections.count)
     }
     
 
@@ -27,4 +67,9 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+class OptionCell: UITableViewCell {
+    
+    @IBOutlet weak var label: UILabel!
 }
