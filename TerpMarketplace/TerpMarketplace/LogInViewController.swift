@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
@@ -15,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginAction(_ sender: UIButton) {
+        
+        print("pressed login")
         
         view.endEditing(true)
         Auth.auth().signIn(withEmail: username.text!, password: password.text!) { (user, Error) in
@@ -37,6 +40,10 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func signUp(_ sender: UIButton) {
+        performSegue(withIdentifier: "signup", sender: self)
     }
     
     var error = "" {

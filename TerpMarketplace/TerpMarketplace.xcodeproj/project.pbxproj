@@ -30,6 +30,16 @@
 		F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */; };
 		F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */; };
 		F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */; };
+		F1B89060227CB5F80061ED72 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8905F227CB5F80061ED72 /* AppSettings.swift */; };
+		F1B89062227CB6240061ED72 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89061227CB6240061ED72 /* Channel.swift */; };
+		F1B89064227CB64E0061ED72 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89063227CB64E0061ED72 /* ChannelsViewController.swift */; };
+		F1B89066227CB6810061ED72 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89065227CB6810061ED72 /* ChatViewController.swift */; };
+		F1B89068227CB6A70061ED72 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */; };
+		F1B89072227CB79A0061ED72 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89071227CB79A0061ED72 /* Message.swift */; };
+		F1B89075227CBC4F0061ED72 /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */; };
+		F1B8907B227CBCE80061ED72 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8907A227CBCE80061ED72 /* ImageExtension.swift */; };
+		F1B8907D227CBCFF0061ED72 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */; };
+		F1E2F8B0227CBF7000858035 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E2F8AF227CBF7000858035 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +70,16 @@
 		F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
 		F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
+		F1B8905F227CB5F80061ED72 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		F1B89061227CB6240061ED72 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		F1B89063227CB64E0061ED72 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		F1B89065227CB6810061ED72 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		F1B89071227CB79A0061ED72 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
+		F1B8907A227CBCE80061ED72 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ImageExtension.swift; sourceTree = "<absolute>"; };
+		F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ViewExtension.swift; sourceTree = "<absolute>"; };
+		F1E2F8AF227CBF7000858035 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ColorExtension.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +146,7 @@
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
 				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
 				F1586E5222651B0200992EFC /* SecondViewController.swift */,
+				F1B89071227CB79A0061ED72 /* Message.swift */,
 				F15053D12273462A00F092CD /* PostItemViewController.swift */,
 				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
 				F1AD4F29227B4E9200B24A99 /* Profile */,
@@ -133,7 +154,16 @@
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
+				F1E2F8AF227CBF7000858035 /* ColorExtension.swift */,
+				F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */,
+				F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */,
+				F1B8907A227CBCE80061ED72 /* ImageExtension.swift */,
 				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
+				F1B8905F227CB5F80061ED72 /* AppSettings.swift */,
+				F1B89061227CB6240061ED72 /* Channel.swift */,
+				F1B89063227CB64E0061ED72 /* ChannelsViewController.swift */,
+				F1B89065227CB6810061ED72 /* ChatViewController.swift */,
+				F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */,
 				F1586E5C22651B0400992EFC /* Info.plist */,
 				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
 				F100A92922765C2A00DFC475 /* Images */,
@@ -270,8 +300,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -279,8 +315,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -296,14 +338,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B89064227CB64E0061ED72 /* ChannelsViewController.swift in Sources */,
 				F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */,
 				F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */,
+				F1B89075227CBC4F0061ED72 /* CollectionViewExtension.swift in Sources */,
+				F1E2F8B0227CBF7000858035 /* ColorExtension.swift in Sources */,
+				F1B89068227CB6A70061ED72 /* DatabaseRepresentation.swift in Sources */,
 				F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */,
 				F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */,
+				F1B89072227CB79A0061ED72 /* Message.swift in Sources */,
+				F1B89062227CB6240061ED72 /* Channel.swift in Sources */,
 				F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */,
+				F1B89060227CB5F80061ED72 /* AppSettings.swift in Sources */,
+				F1B8907D227CBCFF0061ED72 /* ViewExtension.swift in Sources */,
 				F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */,
 				F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */,
+				F1B8907B227CBCE80061ED72 /* ImageExtension.swift in Sources */,
 				F1757F6C226939FC00C7262F /* Item.swift in Sources */,
+				F1B89066227CB6810061ED72 /* ChatViewController.swift in Sources */,
 				F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */,
 				F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */,
 				F1757F7622694CD400C7262F /* User.swift in Sources */,
