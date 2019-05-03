@@ -20,13 +20,16 @@
 		BA704ACA22765667003B8A33 /* Image Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AC922765667003B8A33 /* Image Extension.swift */; };
 		BA704ACC227656EC003B8A33 /* View Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704ACB227656EC003B8A33 /* View Extension.swift */; };
 		CCD738D519082DC3063E07A2 /* Pods_TerpMarketplace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */; };
+		F100A92422765B6600DFC475 /* addphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92322765B6500DFC475 /* addphoto.png */; };
+		F100A92622765B9200DFC475 /* noheart.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92522765B9200DFC475 /* noheart.png */; };
+		F100A92822765BA100DFC475 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92722765BA100DFC475 /* heart.png */; };
+		F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */; };
 		F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15053D12273462A00F092CD /* PostItemViewController.swift */; };
 		F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E4E22651B0200992EFC /* AppDelegate.swift */; };
 		F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5022651B0200992EFC /* ItemListingViewController.swift */; };
 		F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1586E5222651B0200992EFC /* SecondViewController.swift */; };
 		F1586E5622651B0200992EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5422651B0200992EFC /* Main.storyboard */; };
 		F1586E5822651B0400992EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5722651B0400992EFC /* Assets.xcassets */; };
-		F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1586E5922651B0400992EFC /* LaunchScreen.storyboard */; };
 		F1757F6C226939FC00C7262F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F6B226939FC00C7262F /* Item.swift */; };
 		F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F6F22693C1F00C7262F /* MessageViewController.swift */; };
 		F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F7122693C6200C7262F /* ProfileViewController.swift */; };
@@ -36,6 +39,7 @@
 		F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */; };
 		F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */; };
 		F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */; };
+		F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		BA704AC722765611003B8A33 /* Color Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Extension.swift"; sourceTree = "<group>"; };
 		BA704AC922765667003B8A33 /* Image Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Extension.swift"; sourceTree = "<group>"; };
 		BA704ACB227656EC003B8A33 /* View Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extension.swift"; sourceTree = "<group>"; };
+		F100A92322765B6500DFC475 /* addphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addphoto.png; sourceTree = "<group>"; };
+		F100A92522765B9200DFC475 /* noheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noheart.png; sourceTree = "<group>"; };
+		F100A92722765BA100DFC475 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionViewController.swift; sourceTree = "<group>"; };
 		F15053D12273462A00F092CD /* PostItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemViewController.swift; sourceTree = "<group>"; };
 		F1586E4B22651B0200992EFC /* TerpMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerpMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1586E4E22651B0200992EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +69,6 @@
 		F1586E5222651B0200992EFC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F1586E5522651B0200992EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1586E5722651B0400992EFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F1586E5A22651B0400992EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1586E5C22651B0400992EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1757F6B226939FC00C7262F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F1757F6F22693C1F00C7262F /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 		F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
 		F1AAEF7B226694A400DCFF41 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+
 		BA704ACD22765706003B8A33 /* Chat Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +134,16 @@
 				BA704AC322764C38003B8A33 /* DatabaseRepresentation.swift */,
 			);
 			name = Chat;
+
+		F100A92922765C2A00DFC475 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F100A92722765BA100DFC475 /* heart.png */,
+				F100A92522765B9200DFC475 /* noheart.png */,
+				F100A92322765B6500DFC475 /* addphoto.png */,
+			);
+			path = Images;
+      
 			sourceTree = "<group>";
 		};
 		F1586E4222651B0100992EFC = {
@@ -148,23 +167,24 @@
 		F1586E4D22651B0200992EFC /* TerpMarketplace */ = {
 			isa = PBXGroup;
 			children = (
-				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
-				F1586E5222651B0200992EFC /* SecondViewController.swift */,
-				F1586E5422651B0200992EFC /* Main.storyboard */,
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
-				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
-				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
+				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
+				F1586E5222651B0200992EFC /* SecondViewController.swift */,
 				F15053D12273462A00F092CD /* PostItemViewController.swift */,
+				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
+				F1AD4F29227B4E9200B24A99 /* Profile */,
+				F1586E5422651B0200992EFC /* Main.storyboard */,
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
 				BA704ACE22765746003B8A33 /* Chat */,
 				BA704ACD22765706003B8A33 /* Chat Extensions */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
-				F1586E5922651B0400992EFC /* LaunchScreen.storyboard */,
+				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5C22651B0400992EFC /* Info.plist */,
 				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
+				F100A92922765C2A00DFC475 /* Images */,
 				F1AAEF7D2266957300DCFF41 /* SignUpLogin Controllers */,
 			);
 			path = TerpMarketplace;
@@ -179,6 +199,16 @@
 				F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */,
 			);
 			name = "SignUpLogin Controllers";
+			sourceTree = "<group>";
+		};
+		F1AD4F29227B4E9200B24A99 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F1757F7122693C6200C7262F /* ProfileViewController.swift */,
+				F1448FD4227B2F790056884E /* ProfileOptionViewController.swift */,
+				F1AD4F27227B4D6F00B24A99 /* OptionTableViewCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +239,9 @@
 		F1586E4322651B0100992EFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = CMSC436;
@@ -241,9 +274,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1586E5B22651B0400992EFC /* LaunchScreen.storyboard in Resources */,
+				F100A92422765B6600DFC475 /* addphoto.png in Resources */,
 				F1586E5822651B0400992EFC /* Assets.xcassets in Resources */,
 				BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */,
+				F100A92622765B9200DFC475 /* noheart.png in Resources */,
+				F100A92822765BA100DFC475 /* heart.png in Resources */,
 				F1586E5622651B0200992EFC /* Main.storyboard in Resources */,
 				F1AAEF762266862D00DCFF41 /* SignUpLogin.storyboard in Resources */,
 			);
@@ -322,10 +357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */,
+
 				BA704ACC227656EC003B8A33 /* View Extension.swift in Sources */,
 				BA704ABA22764239003B8A33 /* Channel.swift in Sources */,
 				BA704AB822763FE8003B8A33 /* ChannelsViewController.swift in Sources */,
 				BA704AC222764BE9003B8A33 /* Message.swift in Sources */,
+				F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */,
 				F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */,
 				BA704AC822765611003B8A33 /* Color Extension.swift in Sources */,
 				F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */,
@@ -336,6 +373,7 @@
 				BA704AC6227655B2003B8A33 /* CollectionView Extension.swift in Sources */,
 				BA704AC422764C38003B8A33 /* DatabaseRepresentation.swift in Sources */,
 				F1757F6C226939FC00C7262F /* Item.swift in Sources */,
+				F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */,
 				F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */,
 				F1757F7622694CD400C7262F /* User.swift in Sources */,
 				BA704ABE2276449E003B8A33 /* ChatViewController.swift in Sources */,
@@ -356,14 +394,6 @@
 				F1586E5522651B0200992EFC /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F1586E5922651B0400992EFC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1586E5A22651B0400992EFC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

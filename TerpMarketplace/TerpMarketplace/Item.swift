@@ -12,9 +12,9 @@ import Firebase
 class Item {
     
     var sellerId: String!
-    //var itemId: String!
+    var itemId: String!
     var name: String!
-    var price: Float!
+    var price: Int!
     var details: String!
     //var image: UIImage
     var forSale: Bool! = true       // false if sold
@@ -23,9 +23,9 @@ class Item {
     
     init(snapshot: DataSnapshot) {
         let data = snapshot.value as! Dictionary<String, AnyObject>
-   
+        
         name = data["name"] as? String
-        price = data["price"] as? Float
+        price = data["price"]?.integerValue ?? 0
         details = data["details"] as? String
         forSale = data["forSale"] as? Bool
         sellerId = data["sellerId"] as? String

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Photos
 import Firebase
 
-class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var productImage: UIImageView!
@@ -27,17 +28,12 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     var imagePicker: UIImagePickerController!
     var sellerId: String = ""
     var imageUrl: String = ""
+    var chosenImage: UIImage!
     
     // MARK: - Actions
     @IBAction func nextButtonAction(_ sender: UIButton) {
         performSegue(withIdentifier: "segueToAddDetails", sender: self)
     }
-    
-    // Need to send image to segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destVC = segue.destination as! PostItemViewController
-//        destVC.productImage = productImage;
-//    }
     
     @IBAction func postAction(_ sender: UIButton) {
         
@@ -66,6 +62,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         self.present(alert, animated: true, completion: segueBackToHome)
     }
     
+    
     // MARK: - Functions
     
     func segueBackToHome() {
@@ -89,14 +86,9 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
-        print("pressed image")
         let alert = UIAlertController.init(title: "Upload Image", message: "", preferredStyle: .alert)
         let addImage = UIAlertAction(title: "Photo Library", style: .default) {
             action -> Void in
-            
-            // TODO: fix error here
-            self.imagePicker.sourceType = .photoLibrary
-            
             
             self.present(self.imagePicker, animated: true, completion: nil)
         }
@@ -109,26 +101,57 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     // informs delegate that picture was chosen, changes picture
+    // Once picture is chosen, picker closes
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             productImage.image = image
         }
         
-        //self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let imagePicker = UIImagePickerController()
+        // Configure image picker
+        imagePicker = UIImagePickerController();
         imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
         
         // Only perform if on addImage page
-        if (self.restorationIdentifier == "AddImageViewController") {
-            addTapGesture();
+        if let id = self.restorationIdentifier {
+            if id == "AddImageViewController" {
+                addTapGesture();
+                
+                // Resets image
+                productImage.image = UIImage(named: "addphoto.png")
+            }
+            if id == "AddDetailsViewController" {
+                productName.delegate = self
+                productDescription.delegate = self
+                productPrice.delegate = self
+                productLocation.delegate = self
+                
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == productName { // Switch focus to other text field
+            productDescription.becomeFirstResponder()
+            
+        } else if textField == productDescription {
+            productPrice.becomeFirstResponder()
+            
+        } else if textField == productPrice {
+            productLocation.becomeFirstResponder()
+            
         }
         
+        return true
     }
     
     // MARK: - Add Gestures
@@ -139,14 +162,29 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         productImage.addGestureRecognizer(tapImage);
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Send chosen image thru segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        // if not segueing to Home
+        if (segue.destination.restorationIdentifier != "Home") {
+            let destVC = segue.destination as! PostItemViewController
+            destVC.chosenImage = productImage.image;
+        }
     }
-    */
 
 }
+
+/*
+let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus();
+            switch photoAuthorizationStatus {
+            case .authorized: print("Access is granted by user")
+            case .notDetermined: PHPhotoLibrary.requestAuthorization({
+                (newStatus) in print("status is \(newStatus)"); if newStatus == PHAuthorizationStatus.authorized {  print("success") }
+                })
+                case .restricted: print("User do not have access to photo album.")
+                case .denied: print("User has denied the permission.")
+                }
+*/
