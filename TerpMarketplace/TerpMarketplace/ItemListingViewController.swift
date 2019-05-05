@@ -179,7 +179,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     private func userLiked(item: Item, cell: ItemCollectionViewCell) {
         
         if let userId = Auth.auth().currentUser?.uid {
-            let likedItems = self.root.child("users").child(userId).child("likes")
+            let likedItems = self.root.child("users/profile").child(userId).child("likes")
             
             likedItems.observeSingleEvent(of: .value, with: { snap in
                 
@@ -254,7 +254,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 self.likeButton.setImage(#imageLiteral(resourceName: "nolike"), for: .normal)
                 
                 // Remove from database
-                let itemLikedRef = self.root.child("users").child(userId).child("likes");
+                let itemLikedRef = self.root.child("users/profile").child(userId).child("likes");
                 
                 itemLikedRef.child(self.itemId!).removeValue()
                 
@@ -265,7 +265,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 self.likeButton.setImage(#imageLiteral(resourceName: "like"), for: .normal)
                 
                 // Save in database
-                root.child("users/\(userId)/likes/\(itemId!)").setValue("me likey")
+                root.child("users/profile/\(userId)/likes/\(itemId!)").setValue("me likey")
             }
         }
     }
