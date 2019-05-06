@@ -16,6 +16,7 @@ class User {
     var lName: String!
     var itemIds: [String]       // itemIds of items that user likes
     var sellingItemIds: [String]
+    var userLocation: String!
     var ref: DatabaseReference!
     
     init(snapshot: DataSnapshot) {
@@ -35,5 +36,9 @@ class User {
         }
         
         ref = snapshot.ref;
+    }
+    
+    func setLocation(loc: String) {
+        userLocation = loc
     }
 }

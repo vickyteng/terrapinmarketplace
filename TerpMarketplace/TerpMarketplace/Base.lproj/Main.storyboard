@@ -103,7 +103,7 @@
                                             <state key="normal" title="Change" image="geo_fence"/>
                                             <connections>
                                                 <action selector="filterButton:" destination="6My-2l-N9R" eventType="touchUpInside" id="QkF-Xd-GnE"/>
-                                                <segue destination="8IY-Kc-MUT" kind="show" id="cTh-Pn-CZj"/>
+                                                <action selector="locationAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="BXB-o9-btX"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -364,7 +364,7 @@ May take up to 10 seconds</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seller location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qoc-9h-kUE">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100.0,100.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qoc-9h-kUE">
                                 <rect key="frame" x="16" y="367" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -693,6 +693,6 @@ May take up to 10 seconds</string>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k2n-VK-Hej"/>
+        <segue reference="R4J-3n-reU"/>
     </inferredMetricsTieBreakers>
 </document>
