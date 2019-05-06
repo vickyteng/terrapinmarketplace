@@ -1,11 +1,13 @@
 //
-//  AppSettings.swift
+//  ImageExtension.swift
 //  TerpMarketplace
 //
 //  Created by Kyle Lam on 4/28/19.
 //  Copyright © 2019 CMSC436. All rights reserved.
 //
-
+//  This is a modified version of a RayWenderlich tutorial:
+//  https://www.raywenderlich.com/5359-firebase-tutorial-real-time-chat
+//
 /// Copyright (c) 2018 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,28 +36,29 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
-
-final class AppSettings {
-    
-    private enum SettingKey: String {
-        case displayName
-    }
-    
-    static var displayName: String! {
-        get {
-            return UserDefaults.standard.string(forKey: SettingKey.displayName.rawValue)
-        }
-        set {
-            let defaults = UserDefaults.standard
-            let key = SettingKey.displayName.rawValue
-            
-            if let name = newValue {
-                defaults.set(name, forKey: key)
-            } else {
-                defaults.removeObject(forKey: key)
-            }
-        }
-    }
-    
-}
+//import UIKit
+//
+//extension UIImage {
+//    
+//    var scaledToSafeUploadSize: UIImage? {
+//        let maxImageSideLength: CGFloat = 480
+//        
+//        let largerSide: CGFloat = max(size.width, size.height)
+//        let ratioScale: CGFloat = largerSide > maxImageSideLength ? largerSide / maxImageSideLength : 1
+//        let newImageSize = CGSize(width: size.width / ratioScale, height: size.height / ratioScale)
+//        
+//        return image(scaledTo: newImageSize)
+//    }
+//    
+//    func image(scaledTo size: CGSize) -> UIImage? {
+//        defer {
+//            UIGraphicsEndImageContext()
+//        }
+//        
+//        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+//        draw(in: CGRect(origin: .zero, size: size))
+//        
+//        return UIGraphicsGetImageFromCurrentImageContext()
+//    }
+//    
+//}
