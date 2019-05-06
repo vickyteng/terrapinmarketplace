@@ -125,7 +125,7 @@
                                         </state>
                                         <connections>
                                             <action selector="signUp:" destination="Tfd-Is-94a" eventType="touchUpInside" id="aO4-Hs-P9W"/>
-                                            <segue destination="LlA-bX-2iT" kind="show" id="br2-1h-eXi"/>
+                                            <segue destination="LlA-bX-2iT" kind="show" identifier="signup" id="br2-1h-eXi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -267,6 +267,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartInsertDeleteType="no" textContentType="name"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addphoto" highlightedImage="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="0uq-6l-QY5">
+                                <rect key="frame" x="35" y="103" width="84" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eX-LP-pgm">
+                                <rect key="frame" x="117" y="128" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="upload"/>
+                                <connections>
+                                    <action selector="profileChange:" destination="LlA-bX-2iT" eventType="touchUpInside" id="kIH-9g-wd4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -304,6 +316,8 @@
                         <outlet property="firstNameText" destination="LuH-b8-aIY" id="27C-i6-VxM"/>
                         <outlet property="lastNameText" destination="Xnx-Ds-eQq" id="odu-fj-D6O"/>
                         <outlet property="passwordText" destination="p52-0G-pQK" id="htm-AA-cBk"/>
+                        <outlet property="profileImageView" destination="0uq-6l-QY5" id="ktE-30-E9Q"/>
+                        <outlet property="tapToChangeProfileButton" destination="2eX-LP-pgm" id="liB-Z8-6C4"/>
                         <outlet property="usernameText" destination="NLp-Le-3tT" id="n0y-2j-P0X"/>
                     </connections>
                 </viewController>
@@ -312,8 +326,11 @@
             <point key="canvasLocation" x="1043.4782608695652" y="-72.991071428571431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addphoto" width="728" height="728"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="br2-1h-eXi"/>
-        <segue reference="gts-P9-WIn"/>
+        <segue reference="vas-32-z6g"/>
     </inferredMetricsTieBreakers>
 </document>

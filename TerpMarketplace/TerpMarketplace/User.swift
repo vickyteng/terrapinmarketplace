@@ -14,9 +14,11 @@ class User {
     var userId: String!
     var fName: String!
     var lName: String!
+    var email: String!
     var itemIds: [String]       // itemIds of items that user likes
     var sellingItemIds: [String]
     var userLocation: String!
+    var profileImageUrl: String!
     var ref: DatabaseReference!
     
     init(snapshot: DataSnapshot) {
@@ -34,6 +36,13 @@ class User {
         for k in items.keys {
             sellingItemIds.append(k)
         }
+        
+        fName = data["fisrtname"] as? String
+        lName = data["lastname"] as? String
+        
+        profileImageUrl = data["photoUrl"] as? String
+        
+        email = data["username"] as? String
         
         ref = snapshot.ref;
     }

@@ -96,7 +96,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func saveNewItemToUser(itemId: String, sellerId: String, item: [String: Any]) {
         // Save under user
-        self.root.child("users/\(sellerId)/selling/\(itemId)").setValue(item)
+        self.root.child("users/profile/\(sellerId)/selling/\(itemId)").setValue(item)
     }
     
     @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
