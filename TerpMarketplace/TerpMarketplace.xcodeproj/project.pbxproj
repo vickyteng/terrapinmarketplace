@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */; };
 		BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */; };
+		BA704AE2227CDB13003B8A33 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AE1227CDB13003B8A33 /* ColorExtension.swift */; };
+		BA704AE4227CDB21003B8A33 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AE3227CDB21003B8A33 /* ImageExtension.swift */; };
+		BA704AE6227CDB2F003B8A33 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AE5227CDB2F003B8A33 /* ViewExtension.swift */; };
 		CCD738D519082DC3063E07A2 /* Pods_TerpMarketplace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */; };
 		F100A92422765B6600DFC475 /* addphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92322765B6500DFC475 /* addphoto.png */; };
 		F100A92622765B9200DFC475 /* noheart.png in Resources */ = {isa = PBXBuildFile; fileRef = F100A92522765B9200DFC475 /* noheart.png */; };
@@ -37,9 +40,6 @@
 		F1B89068227CB6A70061ED72 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */; };
 		F1B89072227CB79A0061ED72 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89071227CB79A0061ED72 /* Message.swift */; };
 		F1B89075227CBC4F0061ED72 /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */; };
-		F1B8907B227CBCE80061ED72 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8907A227CBCE80061ED72 /* ImageExtension.swift */; };
-		F1B8907D227CBCFF0061ED72 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */; };
-		F1E2F8B0227CBF7000858035 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E2F8AF227CBF7000858035 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +48,9 @@
 		90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.release.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.release.xcconfig"; sourceTree = "<group>"; };
 		BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByLocationViewController.swift; sourceTree = "<group>"; };
 		BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA704AE1227CDB13003B8A33 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BA704AE3227CDB21003B8A33 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		BA704AE5227CDB2F003B8A33 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F100A92322765B6500DFC475 /* addphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addphoto.png; sourceTree = "<group>"; };
 		F100A92522765B9200DFC475 /* noheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noheart.png; sourceTree = "<group>"; };
 		F100A92722765BA100DFC475 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
@@ -77,9 +80,6 @@
 		F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
 		F1B89071227CB79A0061ED72 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
-		F1B8907A227CBCE80061ED72 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ImageExtension.swift; sourceTree = "<absolute>"; };
-		F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ViewExtension.swift; sourceTree = "<absolute>"; };
-		F1E2F8AF227CBF7000858035 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = /Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ColorExtension.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +109,31 @@
 				51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA704AE7227E4988003B8A33 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F1B8905F227CB5F80061ED72 /* AppSettings.swift */,
+				BA704AE8227E4A45003B8A33 /* chat extensions */,
+				F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */,
+				F1B89063227CB64E0061ED72 /* ChannelsViewController.swift */,
+				F1B89061227CB6240061ED72 /* Channel.swift */,
+				F1B89065227CB6810061ED72 /* ChatViewController.swift */,
+				F1B89071227CB79A0061ED72 /* Message.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		BA704AE8227E4A45003B8A33 /* chat extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BA704AE3227CDB21003B8A33 /* ImageExtension.swift */,
+				BA704AE5227CDB2F003B8A33 /* ViewExtension.swift */,
+				BA704AE1227CDB13003B8A33 /* ColorExtension.swift */,
+				F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */,
+			);
+			path = "chat extensions";
 			sourceTree = "<group>";
 		};
 		F100A92922765C2A00DFC475 /* Images */ = {
@@ -142,11 +167,11 @@
 		F1586E4D22651B0200992EFC /* TerpMarketplace */ = {
 			isa = PBXGroup;
 			children = (
+				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
 				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
 				F1586E5222651B0200992EFC /* SecondViewController.swift */,
-				F1B89071227CB79A0061ED72 /* Message.swift */,
 				F15053D12273462A00F092CD /* PostItemViewController.swift */,
 				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
 				F1AD4F29227B4E9200B24A99 /* Profile */,
@@ -154,16 +179,7 @@
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
-				F1E2F8AF227CBF7000858035 /* ColorExtension.swift */,
-				F1B89074227CBC4F0061ED72 /* CollectionViewExtension.swift */,
-				F1B8907C227CBCFF0061ED72 /* ViewExtension.swift */,
-				F1B8907A227CBCE80061ED72 /* ImageExtension.swift */,
-				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
-				F1B8905F227CB5F80061ED72 /* AppSettings.swift */,
-				F1B89061227CB6240061ED72 /* Channel.swift */,
-				F1B89063227CB64E0061ED72 /* ChannelsViewController.swift */,
-				F1B89065227CB6810061ED72 /* ChatViewController.swift */,
-				F1B89067227CB6A70061ED72 /* DatabaseRepresentation.swift */,
+				BA704AE7227E4988003B8A33 /* Chat */,
 				F1586E5C22651B0400992EFC /* Info.plist */,
 				BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */,
 				F100A92922765C2A00DFC475 /* Images */,
@@ -340,20 +356,20 @@
 			files = (
 				F1B89064227CB64E0061ED72 /* ChannelsViewController.swift in Sources */,
 				F1586E5322651B0200992EFC /* SecondViewController.swift in Sources */,
+				BA704AE2227CDB13003B8A33 /* ColorExtension.swift in Sources */,
 				F1448FD5227B2F7A0056884E /* ProfileOptionViewController.swift in Sources */,
+				BA704AE6227CDB2F003B8A33 /* ViewExtension.swift in Sources */,
 				F1B89075227CBC4F0061ED72 /* CollectionViewExtension.swift in Sources */,
-				F1E2F8B0227CBF7000858035 /* ColorExtension.swift in Sources */,
 				F1B89068227CB6A70061ED72 /* DatabaseRepresentation.swift in Sources */,
 				F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */,
+				BA704AE4227CDB21003B8A33 /* ImageExtension.swift in Sources */,
 				F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */,
 				F1B89072227CB79A0061ED72 /* Message.swift in Sources */,
 				F1B89062227CB6240061ED72 /* Channel.swift in Sources */,
 				F1586E4F22651B0200992EFC /* AppDelegate.swift in Sources */,
 				F1B89060227CB5F80061ED72 /* AppSettings.swift in Sources */,
-				F1B8907D227CBCFF0061ED72 /* ViewExtension.swift in Sources */,
 				F1AAEF7C226694A400DCFF41 /* LogInViewController.swift in Sources */,
 				F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */,
-				F1B8907B227CBCE80061ED72 /* ImageExtension.swift in Sources */,
 				F1757F6C226939FC00C7262F /* Item.swift in Sources */,
 				F1B89066227CB6810061ED72 /* ChatViewController.swift in Sources */,
 				F1AD4F28227B4D6F00B24A99 /* OptionTableViewCell.swift in Sources */,

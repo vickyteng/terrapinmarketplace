@@ -4,7 +4,9 @@
 //  Created by Kyle Lam on 4/28/19.
 //  Copyright © 2019 CMSC436. All rights reserved.
 //
-
+//  This is a modified version of a RayWenderlich tutorial:
+//  https://www.raywenderlich.com/5359-firebase-tutorial-real-time-chat
+//
 /// Copyright (c) 2018 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,7 +40,7 @@ import UIKit
 extension UIColor {
     
     static var primary: UIColor {
-        return UIColor(red: 1 / 255, green: 93 / 255, blue: 48 / 255, alpha: 1)
+        return UIColor(red: 20 / 255, green: 125 / 255, blue: 250 / 255, alpha: 1)
     }
     
     static var incomingMessage: UIColor {

@@ -5,7 +5,9 @@
 //  Created by Kyle Lam on 4/28/19.
 //  Copyright © 2019 CMSC436. All rights reserved.
 //
-
+//  This is a modified version of a RayWenderlich tutorial:
+//  https://www.raywenderlich.com/5359-firebase-tutorial-real-time-chat
+//
 /// Copyright (c) 2018 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -88,6 +90,12 @@ final class ChatViewController: MessagesViewController {
             }
         }
         
+        // removes avatar bubble from chat
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            layout.setMessageIncomingAvatarSize(.zero)
+            layout.setMessageOutgoingAvatarSize(.zero)
+        }
+        
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
@@ -168,24 +176,16 @@ extension ChatViewController: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
     }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.isHidden = true
+    }
 }
 
 
 // MARK: - MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
-    
-    func avatarSize(for message: MessageType, at indexPath: IndexPath,
-                    in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        
-        return .zero
-    }
-    
-    func footerViewSize(for message: MessageType, at indexPath: IndexPath,
-                        in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        
-        return CGSize(width: 0, height: 8)
-    }
     
     func heightForLocation(message: MessageType, at indexPath: IndexPath,
                            with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
