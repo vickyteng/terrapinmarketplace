@@ -17,6 +17,7 @@ class User {
     var email: String!
     var itemIds: [String]       // itemIds of items that user likes
     var sellingItemIds: [String]
+    var userLocation: String!
     var profileImageUrl: String!
     var ref: DatabaseReference!
     
@@ -44,5 +45,9 @@ class User {
         email = data["username"] as? String
         
         ref = snapshot.ref;
+    }
+    
+    func setLocation(loc: String) {
+        userLocation = loc
     }
 }

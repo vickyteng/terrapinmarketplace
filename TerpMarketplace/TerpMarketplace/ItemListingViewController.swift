@@ -8,11 +8,12 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 
 // Only list items that are forSale, go thru each
 
-class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+class ItemListingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, CLLocationManagerDelegate {
     
     // MARK: Outlets
     @IBOutlet weak var numberOfItemsLabel: UILabel!
@@ -20,9 +21,37 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var noItemsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // location action
+    @IBAction func locationAction(_ sender: Any) {
+        if (itemsFiltered.count == 0) {
+            byLocation = true
+            
+            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                startTracking()
+            }
+            else {
+                locationManager.requestWhenInUseAuthorization()
+            }
+        }
+        else { // toggle filter by location off
+            byLocation = false
+            itemsFiltered = [] // reset filtered items array
+            stopTracking()
+        }
+        
+        viewDidLoad()
+    }
+    
+    // location variables
+    var locationManager = CLLocationManager()
+    var userLatitude : Double = 0.0
+    var userLongitude : Double = 0.0
+    var byLocation : Bool = false
+    
     var root = Database.database().reference();
     var itemsUserSee : [Item] = []
     var items : [Item] = [];                // all items
+    var itemsFiltered : [Item] = []         // filtered items
     var viewingNumberOfItems = 0 {            // Number of products for sale
         didSet {
             if viewingNumberOfItems == 0 {
@@ -155,9 +184,16 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         collectionView.dataSource = self;
         collectionView.delegate = self;
         
-        startObserving();
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        itemsUserSee = items;
+        if byLocation { // show filtered items
+            itemsUserSee = itemsFiltered
+        }
+        else { // show all items
+            itemsUserSee = items;
+        }
+        
         viewingNumberOfItems = itemsUserSee.count;
         if viewingNumberOfItems == 0 {
             noItemsLabel.text = "No products for sale. Be the first!"
@@ -171,6 +207,7 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
             navBar.clipsToBounds = true;
         }
         
+        startObserving();
     }
     
     // MARK: - Helper Functions
@@ -192,7 +229,60 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                     }
                 }
             })
-            
+        }
+    }
+    
+    // MARK: - Location Functions
+    
+    // returns array of items in range of current location based on given radius
+    private func filterByLocation(radius: Int) {
+        var arr : [Item] = []
+        
+        for item in items {
+            let coordinate = item.location.split(separator: ",")
+            print(coordinate)
+            if coordinate.count == 2 {
+                let latitude = Double(coordinate[0])
+                let longitude = Double(coordinate[1])
+//              print(item.name + "'s latitude:\(latitude!), longitude:\(longitude!)")
+                print("User's latitude:\(userLatitude),longitude:\(userLongitude)")
+
+                
+                // distance formula
+                //(pow((userLatitude - latitude), 2) + pow((userLongitude - longitude), 2)).squareRoot()
+                
+                if latitude != nil && longitude != nil && (pow((userLatitude - latitude!), 2) + pow((userLongitude - longitude!), 2)).squareRoot() < Double(radius) { // if valid add to array
+                    arr.append(item)
+                }
+                else {
+                    print("did not add to arr")
+                }
+            }
+        }
+        print(arr)
+        itemsFiltered = arr
+    }
+    
+    func startTracking() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func stopTracking() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    // get user's current location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue : CLLocationCoordinate2D = manager.location!.coordinate
+        userLatitude = round(locValue.latitude)
+        userLongitude = round(locValue.longitude)
+        filterByLocation(radius: 10)
+        viewDidLoad()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            startTracking()
         }
     }
     
@@ -211,10 +301,17 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 
                 newItems.append(item)
             }
-            self.items = newItems
-            self.viewingNumberOfItems = self.items.count
-            self.itemsUserSee = self.items;
             
+            self.items = newItems
+            
+            if self.byLocation { // show filtered items
+                self.itemsUserSee = self.itemsFiltered
+            }
+            else { // show all items
+                self.itemsUserSee = self.items
+            }
+            
+            self.viewingNumberOfItems = self.itemsUserSee.count
             
             self.collectionView.reloadData()
         })

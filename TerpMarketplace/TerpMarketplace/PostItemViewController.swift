@@ -203,8 +203,8 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         let latitude = locValue.latitude
         let longitude = locValue.longitude
         
-        userLocationLabel.text = "\(latitude), \(longitude)"
-        productLocation.text = "\(round(latitude)), \(round(longitude))"
+        userLocationLabel.text = "\(latitude),\(longitude)"
+        productLocation.text = "\(round(latitude)),\(round(longitude))"
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
