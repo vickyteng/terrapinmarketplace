@@ -5,7 +5,9 @@
 //  Created by Kyle Lam on 4/28/19.
 //  Copyright © 2019 CMSC436. All rights reserved.
 //
-
+//  This is a modified version of a RayWenderlich tutorial:
+//  https://www.raywenderlich.com/5359-firebase-tutorial-real-time-chat
+//
 /// Copyright (c) 2018 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,11 +48,7 @@ struct Message: MessageType {
     let sender: Sender
     
     var kind: MessageKind {
-        if let image = image {
-            return .photo(image as! MediaItem)
-        } else {
-            return .text(content)
-        }
+        return .text(content)
     }
     
     var messageId: String {

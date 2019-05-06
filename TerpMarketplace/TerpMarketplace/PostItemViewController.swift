@@ -9,8 +9,9 @@
 import UIKit
 import Photos
 import Firebase
+import CoreLocation
 
-class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class PostItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var productImage: UIImageView!
@@ -22,6 +23,9 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var postButton: UIButton!
     
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var userLocationLabel: UILabel!
+    
     // MARK: - Variables
     let root = Database.database().reference()
     //let storageRef = Storage.storage.reference()    // need for image
@@ -29,6 +33,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     var sellerId: String = ""
     var imageUrl: String = ""
     var chosenImage: UIImage!
+    var locationManager = CLLocationManager()
     
     // MARK: - Actions
     @IBAction func nextButtonAction(_ sender: UIButton) {
@@ -60,6 +65,15 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         let ok = UIAlertAction(title: "awesome!!", style: .default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: segueBackToHome)
+    }
+    
+    @IBAction func locationAction(_ sender: UIButton) {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            startTracking()
+        }
+        else {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     
@@ -132,9 +146,12 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
                 productDescription.delegate = self
                 productPrice.delegate = self
                 productLocation.delegate = self
-                
             }
         }
+        
+        // location manager setup
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -174,7 +191,28 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             destVC.chosenImage = productImage.image;
         }
     }
-
+    
+    // MARK: - user location
+    func startTracking() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    // get user's current location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue : CLLocationCoordinate2D = manager.location!.coordinate
+        let latitude = locValue.latitude
+        let longitude = locValue.longitude
+        
+        userLocationLabel.text = "\(latitude), \(longitude)"
+        productLocation.text = "\(round(latitude)), \(round(longitude))"
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            startTracking()
+        }
+    }
+    
 }
 
 /*

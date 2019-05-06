@@ -371,21 +371,38 @@ May take up to 10 seconds</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no" textContentType="location"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjj-kW-WHf">
+                                <rect key="frame" x="98" y="433" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Turn on Location Services"/>
+                                <connections>
+                                    <action selector="locationAction:" destination="uU2-Go-LZf" eventType="touchUpInside" id="ICs-1o-f3n"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-KQ-CnR">
+                                <rect key="frame" x="16" y="471" width="378" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R6u-5W-C8f"/>
                     </view>
                     <connections>
+                        <outlet property="locationButton" destination="Kjj-kW-WHf" id="0KY-Pn-7MC"/>
                         <outlet property="postButton" destination="CaA-BH-v5D" id="avj-ni-7aC"/>
                         <outlet property="productDescription" destination="3Sb-T2-jnR" id="j7r-H7-WjP"/>
                         <outlet property="productLocation" destination="Qoc-9h-kUE" id="hbt-lj-ygU"/>
                         <outlet property="productName" destination="jZs-F2-wfh" id="iUq-6B-zb5"/>
                         <outlet property="productPrice" destination="0jz-aP-yme" id="OTT-Y9-PHz"/>
+                        <outlet property="userLocationLabel" destination="mz2-KQ-CnR" id="au1-J6-ZwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUd-9J-cRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="908.9955022488756"/>
+            <point key="canvasLocation" x="-215.94202898550725" y="908.70535714285711"/>
         </scene>
         <!--Item Details View Controller-->
         <scene sceneID="vYF-pa-6NZ">
@@ -671,11 +688,11 @@ May take up to 10 seconds</string>
         <image name="first" width="30" height="30"/>
         <image name="geo_fence" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
-        <image name="nolike" width="25" height="23"/>
+        <image name="nolike" width="104" height="96"/>
         <image name="plus" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R4J-3n-reU"/>
+        <segue reference="k2n-VK-Hej"/>
     </inferredMetricsTieBreakers>
 </document>

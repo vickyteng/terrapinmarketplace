@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ColorExtension.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ViewExtension.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/victoriateng/Desktop/terrapinmarketplace/TerpMarketplace/TerpMarketplace/ImageExtension.swift">
-   </FileRef>
-   <FileRef
       location = "group:TerpMarketplace.xcodeproj">
    </FileRef>
    <FileRef
