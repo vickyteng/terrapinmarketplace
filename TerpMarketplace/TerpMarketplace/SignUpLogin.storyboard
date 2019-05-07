@@ -98,12 +98,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sI6-Cm-RCk">
-                                <rect key="frame" x="190" y="493" width="34" height="30"/>
+                                <rect key="frame" x="187.5" y="493" width="39" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="login">
                                     <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginAction:" destination="Tfd-Is-94a" eventType="touchUpInside" id="fi1-yk-s4M"/>
+                                    <action selector="loginAction:" destination="Tfd-Is-94a" eventType="touchUpInside" id="ru7-0T-9Mz"/>
                                     <segue destination="ONi-Al-YzN" kind="show" identifier="segueToMain" id="zXg-QV-Q0D"/>
                                 </connections>
                             </button>
@@ -123,7 +124,8 @@
                                             <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="LlA-bX-2iT" kind="show" id="br2-1h-eXi"/>
+                                            <action selector="signUp:" destination="Tfd-Is-94a" eventType="touchUpInside" id="aO4-Hs-P9W"/>
+                                            <segue destination="LlA-bX-2iT" kind="show" identifier="signup" id="br2-1h-eXi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -162,6 +164,7 @@
                             <constraint firstItem="WC0-hY-HWn" firstAttribute="centerX" secondItem="9k1-Ae-ocZ" secondAttribute="centerX" id="Rp2-YV-3gO"/>
                             <constraint firstItem="Lmv-Nx-yKa" firstAttribute="top" secondItem="sSi-4w-lEG" secondAttribute="bottom" constant="60" id="ZNW-2C-623"/>
                             <constraint firstItem="Lmv-Nx-yKa" firstAttribute="top" secondItem="s5a-Lt-nVT" secondAttribute="bottom" constant="118" id="ejx-CT-HPv"/>
+                            <constraint firstItem="Xug-lJ-wP2" firstAttribute="height" secondItem="FBD-58-Sf9" secondAttribute="height" id="hZ8-Ra-8nu"/>
                             <constraint firstItem="Xug-lJ-wP2" firstAttribute="centerX" secondItem="9k1-Ae-ocZ" secondAttribute="centerX" id="kV6-v9-ka6"/>
                             <constraint firstItem="sI6-Cm-RCk" firstAttribute="top" secondItem="Xug-lJ-wP2" secondAttribute="bottom" constant="19" id="mgT-VG-jgi"/>
                             <constraint firstItem="9k1-Ae-ocZ" firstAttribute="trailing" secondItem="FBD-58-Sf9" secondAttribute="trailing" constant="35" id="rDr-AX-IZQ"/>
@@ -173,7 +176,6 @@
                     </view>
                     <connections>
                         <outlet property="errorLabel" destination="sSi-4w-lEG" id="e3S-aL-HDl"/>
-                        <outlet property="loginButton" destination="sI6-Cm-RCk" id="MAv-Bp-b1Z"/>
                         <outlet property="password" destination="Xug-lJ-wP2" id="rfy-YU-TuS"/>
                         <outlet property="username" destination="FBD-58-Sf9" id="bTo-ys-SfF"/>
                     </connections>
@@ -253,6 +255,7 @@
                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="login:" destination="LlA-bX-2iT" eventType="touchUpInside" id="quz-CS-nw1"/>
                                             <segue destination="Tfd-Is-94a" kind="show" identifier="login" id="gts-P9-WIn"/>
                                         </connections>
                                     </button>
@@ -264,16 +267,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartInsertDeleteType="no" textContentType="name"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addphoto" highlightedImage="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="xAI-gI-eDM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addphoto" highlightedImage="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="0uq-6l-QY5">
                                 <rect key="frame" x="35" y="103" width="84" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-DZ-e8x">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eX-LP-pgm">
                                 <rect key="frame" x="117" y="128" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="upload"/>
                                 <connections>
-                                    <action selector="profileChange:" destination="LlA-bX-2iT" eventType="touchUpInside" id="RM7-OC-K4D"/>
+                                    <action selector="profileChange:" destination="LlA-bX-2iT" eventType="touchUpInside" id="kIH-9g-wd4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -313,8 +316,8 @@
                         <outlet property="firstNameText" destination="LuH-b8-aIY" id="27C-i6-VxM"/>
                         <outlet property="lastNameText" destination="Xnx-Ds-eQq" id="odu-fj-D6O"/>
                         <outlet property="passwordText" destination="p52-0G-pQK" id="htm-AA-cBk"/>
-                        <outlet property="profileImageView" destination="xAI-gI-eDM" id="EmK-0O-MKx"/>
-                        <outlet property="tapToChangeProfileButton" destination="LJA-DZ-e8x" id="nMr-8b-jkA"/>
+                        <outlet property="profileImageView" destination="0uq-6l-QY5" id="ktE-30-E9Q"/>
+                        <outlet property="tapToChangeProfileButton" destination="2eX-LP-pgm" id="liB-Z8-6C4"/>
                         <outlet property="usernameText" destination="NLp-Le-3tT" id="n0y-2j-P0X"/>
                     </connections>
                 </viewController>
@@ -328,6 +331,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="br2-1h-eXi"/>
-        <segue reference="gts-P9-WIn"/>
+        <segue reference="vas-32-z6g"/>
     </inferredMetricsTieBreakers>
 </document>

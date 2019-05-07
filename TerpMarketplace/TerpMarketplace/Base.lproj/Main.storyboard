@@ -81,6 +81,7 @@
                                             <outlet property="likeButton" destination="I9S-BP-2Me" id="Ivt-1B-8wJ"/>
                                             <outlet property="productName" destination="r9l-Xg-jak" id="omT-Qu-k9z"/>
                                             <outlet property="productPrice" destination="8lT-U3-tEY" id="XIm-Wc-6Fa"/>
+                                            <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="MZr-5W-TyD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -103,7 +104,7 @@
                                             <state key="normal" title="Change" image="geo_fence"/>
                                             <connections>
                                                 <action selector="filterButton:" destination="6My-2l-N9R" eventType="touchUpInside" id="QkF-Xd-GnE"/>
-                                                <segue destination="8IY-Kc-MUT" kind="show" id="cTh-Pn-CZj"/>
+                                                <action selector="locationAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="BXB-o9-btX"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -210,7 +211,7 @@ May take up to 10 seconds</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lr-Sq-g6c">
-                                <rect key="frame" x="126" y="113" width="122" height="30"/>
+                                <rect key="frame" x="146" y="112" width="122" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Location Services"/>
                                 <connections>
@@ -218,7 +219,7 @@ May take up to 10 seconds</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZK-hG-IVe">
-                                <rect key="frame" x="16" y="197" width="343" height="21"/>
+                                <rect key="frame" x="36" y="197" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -364,43 +365,117 @@ May take up to 10 seconds</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seller location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qoc-9h-kUE">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100.0,100.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qoc-9h-kUE">
                                 <rect key="frame" x="16" y="367" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no" textContentType="location"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjj-kW-WHf">
+                                <rect key="frame" x="98" y="433" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Turn on Location Services"/>
+                                <connections>
+                                    <action selector="locationAction:" destination="uU2-Go-LZf" eventType="touchUpInside" id="ICs-1o-f3n"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-KQ-CnR">
+                                <rect key="frame" x="16" y="471" width="378" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R6u-5W-C8f"/>
                     </view>
                     <connections>
+                        <outlet property="locationButton" destination="Kjj-kW-WHf" id="0KY-Pn-7MC"/>
                         <outlet property="postButton" destination="CaA-BH-v5D" id="avj-ni-7aC"/>
                         <outlet property="productDescription" destination="3Sb-T2-jnR" id="j7r-H7-WjP"/>
                         <outlet property="productLocation" destination="Qoc-9h-kUE" id="hbt-lj-ygU"/>
                         <outlet property="productName" destination="jZs-F2-wfh" id="iUq-6B-zb5"/>
                         <outlet property="productPrice" destination="0jz-aP-yme" id="OTT-Y9-PHz"/>
+                        <outlet property="userLocationLabel" destination="mz2-KQ-CnR" id="au1-J6-ZwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUd-9J-cRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="908.9955022488756"/>
+            <point key="canvasLocation" x="-215.94202898550725" y="908.70535714285711"/>
         </scene>
         <!--Item Details View Controller-->
         <scene sceneID="vYF-pa-6NZ">
             <objects>
-                <viewController id="XmO-O0-Yhn" userLabel="Item Details View Controller" sceneMemberID="viewController">
+                <viewController id="XmO-O0-Yhn" userLabel="Item Details View Controller" customClass="ItemDetailsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xo7-lg-beE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqD-Rv-iwn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="wEM-GL-WoS"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tty-D6-kur">
+                                <rect key="frame" x="20" y="88" width="374" height="360"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-zc-Pau" userLabel="Item Name">
+                                <rect key="frame" x="20" y="467" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-rW-1Vg" userLabel="Seller Name">
+                                <rect key="frame" x="20" y="569" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUa-4h-7ba" userLabel="Seller Email">
+                                <rect key="frame" x="20" y="598" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37T-SF-Aeb" userLabel="Description">
+                                <rect key="frame" x="20" y="496" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-ss-RSs" userLabel="Price">
+                                <rect key="frame" x="355" y="467" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.1491339445" green="0.45911326139999997" blue="0.1208708951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BfK-oq-Gbs"/>
                     </view>
+                    <connections>
+                        <outlet property="itemDescription" destination="37T-SF-Aeb" id="GUG-Nl-MOb"/>
+                        <outlet property="itemName" destination="gmi-zc-Pau" id="mMf-6F-W2z"/>
+                        <outlet property="itemPhoto" destination="tty-D6-kur" id="ugg-RR-S7c"/>
+                        <outlet property="itemPrice" destination="rgQ-ss-RSs" id="cVh-sb-Mg9"/>
+                        <outlet property="navBar" destination="eqD-Rv-iwn" id="KcD-Ub-DS4"/>
+                        <outlet property="sellerEmail" destination="nUa-4h-7ba" id="4dQ-OP-xBq"/>
+                        <outlet property="sellerName" destination="jIE-rW-1Vg" id="hfo-K7-Llv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFn-Uh-k0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="1731"/>
+            <point key="canvasLocation" x="-230.43478260869566" y="1730.3571428571429"/>
         </scene>
         <!--Add Item Navigation Controller-->
         <scene sceneID="RZB-XC-vzj">
@@ -419,22 +494,6 @@ May take up to 10 seconds</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8Q-Y4-kS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-215" y="-576"/>
-        </scene>
-        <!--Message View Controller-->
-        <scene sceneID="mke-31-lsA">
-            <objects>
-                <viewController id="xte-W6-KDn" userLabel="Message View Controller" customClass="MessageViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d7Y-gn-Wt2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="KM3-eW-90h"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xhy-8P-hfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="548" y="-576"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="8XS-BH-C5v">
@@ -481,7 +540,7 @@ May take up to 10 seconds</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ako-3D-iqd">
-                                        <rect key="frame" x="149" y="30" width="45" height="21"/>
+                                        <rect key="frame" x="149" y="30" width="244" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -538,7 +597,7 @@ May take up to 10 seconds</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="jP5-ND-Sy6" id="UMC-0C-v1g"/>
-                                            <segue destination="XmO-O0-Yhn" kind="show" id="dVV-gY-GfJ"/>
+                                            <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="dVV-gY-GfJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -572,7 +631,36 @@ May take up to 10 seconds</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="diV-N0-mfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="-576"/>
+            <point key="canvasLocation" x="1357" y="-577"/>
+        </scene>
+        <!--Channels View Controller-->
+        <scene sceneID="tJC-R3-5sC">
+            <objects>
+                <tableViewController id="w1E-uw-1zu" customClass="ChannelsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8uw-pV-0f1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5Hq-a3-2GE">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Hq-a3-2GE" id="i2M-ur-QdX">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w1E-uw-1zu" id="MJF-jO-VjB"/>
+                            <outlet property="delegate" destination="w1E-uw-1zu" id="x8E-fR-KSp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yJZ-7w-R4u"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xa7-ZD-eFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="188"/>
         </scene>
         <!--Suggested-->
         <scene sceneID="wg7-f3-ORb">
@@ -624,13 +712,32 @@ May take up to 10 seconds</string>
                         <segue destination="NVB-JG-B0i" kind="relationship" relationship="viewControllers" id="dnF-39-uG5"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Rij-YM-19q" kind="relationship" relationship="viewControllers" id="7DW-gz-dd5"/>
-                        <segue destination="xte-W6-KDn" kind="relationship" relationship="viewControllers" id="Vzc-8m-dat"/>
+                        <segue destination="W0S-da-vcq" kind="relationship" relationship="viewControllers" id="Vzc-8m-dat"/>
                         <segue destination="FkD-hW-GER" kind="relationship" relationship="viewControllers" id="aT4-eu-Fed"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-215" y="-1464"/>
+        </scene>
+        <!--Messages-->
+        <scene sceneID="ui4-Wr-S1G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W0S-da-vcq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o4r-Hj-Pbw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w1E-uw-1zu" kind="relationship" relationship="rootViewController" id="WfQ-35-6zj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="riw-KJ-lJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="547.82608695652175" y="-576.5625"/>
         </scene>
     </scenes>
     <resources>
@@ -644,6 +751,7 @@ May take up to 10 seconds</string>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dVV-gY-GfJ"/>
         <segue reference="R4J-3n-reU"/>
     </inferredMetricsTieBreakers>
 </document>

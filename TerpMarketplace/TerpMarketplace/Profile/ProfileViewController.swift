@@ -36,16 +36,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         retrieveUserInfo();
         getAllItems();
+        
     }
     
     private func retrieveUserInfo() {
         if let userId = Auth.auth().currentUser?.uid {
-            self.root.child("users").child(userId).observe(.value, with: {(snap) in
+            self.root.child("users/profile").child(userId).observe(.value, with: {(snap) in
             
                 let user = User(snapshot: snap)
                 
                 self.currUser = user
                 self.currUser.userId = snap.key
+                self.setProfileView();
             })
         }
     }
@@ -66,6 +68,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.allItems = newItems
         })
+    }
+    
+    private func setProfileView() {
+        
+        let storageRef = Storage.storage().reference().child("user").child(currUser.userId)
+        
+        storageRef.downloadURL(completion: { (url, error) in
+            do {
+            let data = try Data(contentsOf: url!)
+            let image = UIImage(data: data as Data)
+            self.profilePicture.image = image
+            } catch {
+                print ("Error downloading image from storage")
+            }
+        })
+        
+        nameLabel.text = currUser.fName + " " + currUser.lName;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

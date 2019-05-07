@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Foundation
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -19,14 +18,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
-    
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var tapToChangeProfileButton: UIButton!
     
-    
-    @IBAction func profileChange(_ sender: Any) {
-        
+    @IBAction func profileChange(_ sender: UIButton) {
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
@@ -34,9 +29,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
     
-   
+    
     var imagePicker = UIImagePickerController()
     
+    
+    @IBAction func login(_ sender: UIButton) {
+        performSegue(withIdentifier: "login", sender: self)
+    }
     
     var error = "" {
         didSet {
@@ -44,22 +43,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    var ref : DatabaseReference!
     
-    
-    var ref: DatabaseReference!
-    
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         ref = Database.database().reference()
-        //profile picture
-        //imagePicker.delegate = self
-        
-        //keyboard
         
         firstNameText.delegate = self
         lastNameText.delegate = self
@@ -69,27 +58,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         configureTapGesture()
         
-        
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
- 
-        
-       
         
         // Do any additional setup after loading the view.
     }
     
-    
     @objc func openImagePicker(_ sender: Any){
         
         // open image picker
-       
+        
         self.present(imagePicker,  animated: true, completion: nil)
         
         
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -113,38 +98,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let image = profileImageView.image else {return}
         
         view.endEditing(true)
-        
         Auth.auth().createUser(withEmail: usernameText.text!, password: passwordText.text!) { (user, Error) in
             if Error == nil && user != nil
             {
-              
-               
                 self.uploadProfileImage(image) { url in
-                    
-                    
-                    
-                    
-                    
                     if url != nil {
                         
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                        
+            
                         changeRequest?.displayName = username
-                        
                         changeRequest?.photoURL = url
-                        
-                     
                         changeRequest?.commitChanges { error in
                             
                             if error == nil{
-                                
                                 print("user display name change")
-                                
-                                
-                                
                                 self.saveProfile(username: username,firstname: firstname,lastname:lastname, profileImageURL: url!){ success in
-                                    
-                                    
                                     
                                     if success {
                                         
@@ -152,16 +120,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                         
                                     }
                                     
-                                    
-                                    
                                 }
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                                 //self.dismiss(animated:false, completion: nil)
                                 
                             } else {
@@ -171,58 +130,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 
                             }
                             
-                            
-                            
-                            
-                            
-                            
-                            
                         }
-                        
-                        
-                        
                     } else {
                         
                         //error
                         
-                        
-                        
                     }
                     
-                    
-                    
-                    
-                    
-                    
-                    
                 }
-                    
-                    
                 //succesful sign up
                 self.error = "Successful Signup"
                 
                 self.performSegue(withIdentifier: "login", sender: self)
                 
-                
-                
-                
-                
-               
-            }
-            else
-            {
-                if let myerror = Error?.localizedDescription
-                {
+            } else {
+                if let myerror = Error?.localizedDescription {
                     self.error = myerror
-                }
-                else
-                {
+                } else {
                     self.error = "Error"
                 }
-               
             }
         }
     }
+    
     func saveProfile(username:String,firstname:String,lastname:String,profileImageURL: URL , completion: @escaping ((_ success: Bool)->())){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let databaseRef = Database.database().reference().child("users/profile/\(uid)")
@@ -238,7 +168,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-    
     
     func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())){
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -260,18 +189,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 completion(nil)
             }
         }
-    
         
-            //Storage.storage().reference().child("user/\()")
+        
+        //Storage.storage().reference().child("user/\()")
         
         
         
         //storageRef.storage().reference().child("user/\()")
-            //= Storage.storage().reference().child("user/\()")
+        //= Storage.storage().reference().child("user/\()")
     }
     
-    
-
     /*
     // MARK: - Navigation
 
@@ -288,11 +215,11 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-        }
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
-           self.profileImageView.image = pickedImage
+            self.profileImageView.image = pickedImage
         }
         
         

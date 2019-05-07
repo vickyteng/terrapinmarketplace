@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 class Item {
     
@@ -18,7 +19,7 @@ class Item {
     var details: String!
     //var image: UIImage
     var forSale: Bool! = true       // false if sold
-    //var location: CLLocation?
+    var location: String!
     var ref: DatabaseReference
     
     init(snapshot: DataSnapshot) {
@@ -29,6 +30,7 @@ class Item {
         details = data["details"] as? String
         forSale = data["forSale"] as? Bool
         sellerId = data["sellerId"] as? String
+        location = data["location"] as? String
     
         ref = snapshot.ref;
     }
