@@ -49,8 +49,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         // retrieve seller ID from firebase
         //sellerId = Auth.auth().currentUser!.uid
         
-        
-        
         let newItem: [String: Any] = [
             "sellerId": sellerId,
             "name": productName.text!,
@@ -73,8 +71,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         self.present(alert, animated: true, completion: segueBackToHome)
     }
     
-    
-    
     @IBAction func locationAction(_ sender: UIButton) {
         if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             startTracking()
@@ -86,8 +82,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     // MARK: - Functions
-    
-   
     
     func segueBackToHome() {
         self.performSegue(withIdentifier: "segueToMain", sender: self)
@@ -121,13 +115,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancel)
         
-        
         self.present(alert, animated: true, completion: nil)
-        
-        
-        
-        
-        
         
     }
     
@@ -140,7 +128,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         guard let image = productImage.image else {return}
-        
         
         
         self.uploadProductImage(image){url in
@@ -170,7 +157,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     
