@@ -81,6 +81,7 @@
                                             <outlet property="likeButton" destination="I9S-BP-2Me" id="Ivt-1B-8wJ"/>
                                             <outlet property="productName" destination="r9l-Xg-jak" id="omT-Qu-k9z"/>
                                             <outlet property="productPrice" destination="8lT-U3-tEY" id="XIm-Wc-6Fa"/>
+                                            <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="MZr-5W-TyD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -210,7 +211,7 @@ May take up to 10 seconds</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lr-Sq-g6c">
-                                <rect key="frame" x="126" y="113" width="122" height="30"/>
+                                <rect key="frame" x="146" y="112" width="122" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Location Services"/>
                                 <connections>
@@ -218,7 +219,7 @@ May take up to 10 seconds</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZK-hG-IVe">
-                                <rect key="frame" x="16" y="197" width="343" height="21"/>
+                                <rect key="frame" x="36" y="197" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -407,17 +408,74 @@ May take up to 10 seconds</string>
         <!--Item Details View Controller-->
         <scene sceneID="vYF-pa-6NZ">
             <objects>
-                <viewController id="XmO-O0-Yhn" userLabel="Item Details View Controller" sceneMemberID="viewController">
+                <viewController id="XmO-O0-Yhn" userLabel="Item Details View Controller" customClass="ItemDetailsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xo7-lg-beE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqD-Rv-iwn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="wEM-GL-WoS"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tty-D6-kur">
+                                <rect key="frame" x="20" y="88" width="374" height="360"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-zc-Pau" userLabel="Item Name">
+                                <rect key="frame" x="20" y="467" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-rW-1Vg" userLabel="Seller Name">
+                                <rect key="frame" x="20" y="569" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUa-4h-7ba" userLabel="Seller Email">
+                                <rect key="frame" x="20" y="598" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37T-SF-Aeb" userLabel="Description">
+                                <rect key="frame" x="20" y="496" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-ss-RSs" userLabel="Price">
+                                <rect key="frame" x="355" y="467" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.1491339445" green="0.45911326139999997" blue="0.1208708951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BfK-oq-Gbs"/>
                     </view>
+                    <connections>
+                        <outlet property="itemDescription" destination="37T-SF-Aeb" id="GUG-Nl-MOb"/>
+                        <outlet property="itemName" destination="gmi-zc-Pau" id="mMf-6F-W2z"/>
+                        <outlet property="itemPhoto" destination="tty-D6-kur" id="ugg-RR-S7c"/>
+                        <outlet property="itemPrice" destination="rgQ-ss-RSs" id="cVh-sb-Mg9"/>
+                        <outlet property="navBar" destination="eqD-Rv-iwn" id="KcD-Ub-DS4"/>
+                        <outlet property="sellerEmail" destination="nUa-4h-7ba" id="4dQ-OP-xBq"/>
+                        <outlet property="sellerName" destination="jIE-rW-1Vg" id="hfo-K7-Llv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFn-Uh-k0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="1731"/>
+            <point key="canvasLocation" x="-230.43478260869566" y="1730.3571428571429"/>
         </scene>
         <!--Add Item Navigation Controller-->
         <scene sceneID="RZB-XC-vzj">
@@ -539,7 +597,7 @@ May take up to 10 seconds</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="jP5-ND-Sy6" id="UMC-0C-v1g"/>
-                                            <segue destination="XmO-O0-Yhn" kind="show" id="dVV-gY-GfJ"/>
+                                            <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="dVV-gY-GfJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -688,11 +746,12 @@ May take up to 10 seconds</string>
         <image name="first" width="30" height="30"/>
         <image name="geo_fence" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
-        <image name="nolike" width="104" height="96"/>
+        <image name="nolike" width="25" height="23"/>
         <image name="plus" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dVV-gY-GfJ"/>
         <segue reference="R4J-3n-reU"/>
     </inferredMetricsTieBreakers>
 </document>

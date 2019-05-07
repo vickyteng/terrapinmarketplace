@@ -28,6 +28,7 @@
 		F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F7122693C6200C7262F /* ProfileViewController.swift */; };
 		F1757F742269497C00C7262F /* ItemListingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */; };
 		F1757F7622694CD400C7262F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F7522694CD400C7262F /* User.swift */; };
+		F1815671228113E300AEC0BA /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1815670228113E300AEC0BA /* ItemDetailsViewController.swift */; };
 		F1AAEF762266862D00DCFF41 /* SignUpLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */; };
 		F1AAEF782266879B00DCFF41 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */; };
 		F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */; };
@@ -68,6 +69,7 @@
 		F1757F7122693C6200C7262F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListingCollectionReusableView.swift; sourceTree = "<group>"; };
 		F1757F7522694CD400C7262F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1815670228113E300AEC0BA /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		F1AAEF752266862D00DCFF41 /* SignUpLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpLogin.storyboard; sourceTree = "<group>"; };
 		F1AAEF772266879B00DCFF41 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F1AAEF792266948200DCFF41 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				F1586E4E22651B0200992EFC /* AppDelegate.swift */,
 				F1586E5022651B0200992EFC /* ItemListingViewController.swift */,
 				F1757F732269497C00C7262F /* ItemListingCollectionReusableView.swift */,
+				F1815670228113E300AEC0BA /* ItemDetailsViewController.swift */,
 				F1586E5222651B0200992EFC /* SecondViewController.swift */,
 				BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */,
 				F15053D12273462A00F092CD /* PostItemViewController.swift */,
@@ -376,6 +379,7 @@
 				F15053D22273462A00F092CD /* PostItemViewController.swift in Sources */,
 				F1757F7622694CD400C7262F /* User.swift in Sources */,
 				F1586E5122651B0200992EFC /* ItemListingViewController.swift in Sources */,
+				F1815671228113E300AEC0BA /* ItemDetailsViewController.swift in Sources */,
 				F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */,
 				F1757F742269497C00C7262F /* ItemListingCollectionReusableView.swift in Sources */,
 				BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */,
