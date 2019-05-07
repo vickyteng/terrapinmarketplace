@@ -42,8 +42,12 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func postAction(_ sender: UIButton) {
         
+        //guard let image = productImage.image else {return}
+        
+    
+        
         // retrieve seller ID from firebase
-        sellerId = Auth.auth().currentUser!.uid
+        //sellerId = Auth.auth().currentUser!.uid
         
         let newItem: [String: Any] = [
             "sellerId": sellerId,
@@ -112,6 +116,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         alert.addAction(cancel)
         
         self.present(alert, animated: true, completion: nil)
+        
     }
     
     // informs delegate that picture was chosen, changes picture
@@ -122,6 +127,36 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             productImage.image = image
         }
         
+        guard let image = productImage.image else {return}
+        
+        
+        self.uploadProductImage(image){url in
+            if url != nil {
+                
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                
+                //changeRequest?.displayName = username
+                changeRequest?.photoURL = url
+                changeRequest?.commitChanges { error in
+                    
+                    if error == nil{
+                        
+                        
+                    } else {
+                        
+                        
+                        print("Error: \(String(describing: error?.localizedDescription))")
+                        
+                    }
+                    
+                }
+            } else {
+                
+                //error
+                
+            }
+            
+        }
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -130,6 +165,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // Configure image picker
         imagePicker = UIImagePickerController();
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         
@@ -213,8 +249,35 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    func uploadProductImage(_ image:UIImage,completion: @escaping ((_ url:URL?)->()))
+        
+    {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        
+        let storageRef = Storage.storage().reference().child("product/\(uid)")
+        
+        guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        storageRef.putData(imageData, metadata: metaData) { metaData, error in
+            if error == nil, metaData != nil {
+                
+                storageRef.downloadURL { url, error in
+                    completion(url)
+                    // success!
+                }
+            } else {
+                // failed
+                completion(nil)
+            }
+        
+        }
 }
+    
 
+}
 /*
 let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus();
             switch photoAuthorizationStatus {
