@@ -25,8 +25,6 @@ class ItemDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(item.itemId)
-        print(item.imageUrl)
         loadItemDetails();
         // Do any additional setup after loading the view.
     }

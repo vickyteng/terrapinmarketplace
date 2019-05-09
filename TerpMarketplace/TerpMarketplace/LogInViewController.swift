@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginAction(_ sender: UIButton) {
         
-        print("pressed login")
-        
         view.endEditing(true)
         Auth.auth().signIn(withEmail: username.text!, password: password.text!) { (user, Error) in
             if user != nil {
