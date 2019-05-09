@@ -44,9 +44,6 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
         for i in 0..<self.allItems!.count {
             let curr = self.allItems![i]
             
-            print(likedItemIds)
-            print(curr.itemId)
-            
             if likedItemIds.contains(curr.itemId) {
                 print(curr)
                 getLikedItems.append(curr)

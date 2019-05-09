@@ -21,6 +21,7 @@ class Item {
     var forSale: Bool! = true       // false if sold
     var location: String!
     var ref: DatabaseReference
+    var imageUrl: String!
     
     init(snapshot: DataSnapshot) {
         let data = snapshot.value as! Dictionary<String, AnyObject>
@@ -31,6 +32,7 @@ class Item {
         forSale = data["forSale"] as? Bool
         sellerId = data["sellerId"] as? String
         location = data["location"] as? String
+        imageUrl = data["imageUrl"] as? String
     
         ref = snapshot.ref;
     }
