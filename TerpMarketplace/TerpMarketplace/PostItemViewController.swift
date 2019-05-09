@@ -43,7 +43,17 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func postAction(_ sender: UIButton) {
         
+<<<<<<< HEAD
         sellerId = Auth.auth().currentUser!.uid
+=======
+        //guard let image = productImage.image else {return}
+        
+    
+        
+        // retrieve seller ID from firebase
+        //sellerId = Auth.auth().currentUser!.uid
+        
+>>>>>>> ddba09864426654a8ceafe2edc27201419cbec52
         let newItem: [String: Any] = [
             "sellerId": sellerId,
             "name": productName.text!,
@@ -129,8 +139,16 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+<<<<<<< HEAD
     
     // MARK: - Helper Functions
+=======
+    // MARK: - Functions
+    
+    func segueBackToHome() {
+        self.performSegue(withIdentifier: "segueToMain", sender: self)
+    }
+>>>>>>> ddba09864426654a8ceafe2edc27201419cbec52
     
     // Saves item in /allItems, then returns item reference on completion
     func saveNewItem(_ newItem: [String: Any], completion: @escaping (DatabaseReference) -> Void) {
@@ -165,8 +183,18 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             productLocation.becomeFirstResponder()
             
         }
+<<<<<<< HEAD
         
         return true
+=======
+        alert.addAction(addImage)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+>>>>>>> ddba09864426654a8ceafe2edc27201419cbec52
     }
     
     // informs delegate that picture was chosen, changes picture
@@ -187,12 +215,19 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         print("Trying to get storage ref:")
         print(storageRef)
         
+<<<<<<< HEAD
         guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         
         storageRef.putData(imageData, metadata: metaData) { metaData, error in
             if error == nil, metaData != nil {
+=======
+        self.uploadProductImage(image){url in
+            if url != nil {
+                
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+>>>>>>> ddba09864426654a8ceafe2edc27201419cbec52
                 
                 storageRef.downloadURL { url, error in
                     print("Success")
@@ -205,6 +240,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             
         }
+<<<<<<< HEAD
+=======
+        picker.dismiss(animated: true, completion: nil)
+>>>>>>> ddba09864426654a8ceafe2edc27201419cbec52
     }
     
     @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
