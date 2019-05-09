@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mNM-wZ-muV">
-                                <rect key="frame" x="4" y="88" width="406" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZr-yl-Bg2">
                                     <size key="itemSize" width="200" height="220"/>
@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="LJq-Jj-RMB" customClass="ItemCollectionViewCell" customModule="TerpMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="103" y="55" width="200" height="220"/>
+                                        <rect key="frame" x="107" y="55" width="200" height="220"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
@@ -87,11 +87,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemListingHeader" id="6My-2l-N9R" userLabel="Item Listing Collection Reusable View" customClass="ItemListingCollectionReusableView" customModule="TerpMarketplace" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="406" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-1R-UUI">
-                                            <rect key="frame" x="0.0" y="3" width="355.5" height="47"/>
+                                            <rect key="frame" x="0.0" y="3" width="362.5" height="47"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <outlet property="delegate" destination="mNM-wZ-muV" id="xkt-2U-WDf"/>
@@ -147,11 +147,11 @@ May take up to 10 seconds</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.83998954296112061" green="0.28881549835205078" blue="0.30087876319885254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="mNM-wZ-muV" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="CLr-Hh-U3P"/>
                             <constraint firstItem="89N-gq-v3g" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="M8y-LM-7XE"/>
                             <constraint firstItem="mNM-wZ-muV" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="RwF-nf-1gk"/>
-                            <constraint firstItem="mNM-wZ-muV" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="aLZ-6G-wPU"/>
                             <constraint firstItem="mNM-wZ-muV" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="ao2-2v-iek"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="mNM-wZ-muV" secondAttribute="bottom" id="c6G-u3-xnO"/>
                             <constraint firstItem="89N-gq-v3g" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="kVC-Ti-p6R"/>
@@ -162,7 +162,6 @@ May take up to 10 seconds</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="acW-dT-cKf" userLabel="Home"/>
                     <navigationItem key="navigationItem" id="fT8-LU-UQr" userLabel="Navigation Item">
-                        <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="qAu-Ik-OzS">
                             <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -173,18 +172,19 @@ May take up to 10 seconds</string>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Terrapin Marketplace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9V-2k-dhn" userLabel="Terrapin Marketplace Label">
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="15"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZF-kA-hxP" userLabel="Products Label">
                                             <rect key="frame" x="0.0" y="19" width="179" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
                             </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.4488220363" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="OL1-dk-DhI" firstAttribute="top" secondItem="qAu-Ik-OzS" secondAttribute="top" constant="-18" id="Svc-Rd-Laf"/>
                                 <constraint firstItem="OL1-dk-DhI" firstAttribute="centerX" secondItem="qAu-Ik-OzS" secondAttribute="centerX" id="aff-5u-cLm"/>
@@ -242,10 +242,13 @@ May take up to 10 seconds</string>
         <scene sceneID="1AI-hz-gR6">
             <objects>
                 <navigationController id="NVB-JG-B0i" userLabel="Home Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="lpG-fg-hlk"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="lpG-fg-hlk">
+                        <color key="badgeColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RbT-gv-GFH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="k2n-VK-Hej"/>
@@ -351,7 +354,7 @@ May take up to 10 seconds</string>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="next" smartInsertDeleteType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaA-BH-v5D">
-                                <rect key="frame" x="90" y="578" width="195" height="30"/>
+                                <rect key="frame" x="110" y="578" width="195" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Post Product to Marketplace"/>
                                 <connections>
@@ -373,14 +376,6 @@ May take up to 10 seconds</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no" textContentType="location"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjj-kW-WHf">
-                                <rect key="frame" x="98" y="433" width="178" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Turn on Location Services"/>
-                                <connections>
-                                    <action selector="locationAction:" destination="uU2-Go-LZf" eventType="touchUpInside" id="ICs-1o-f3n"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-KQ-CnR">
                                 <rect key="frame" x="16" y="471" width="378" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -388,6 +383,14 @@ May take up to 10 seconds</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjj-kW-WHf">
+                                <rect key="frame" x="118" y="433" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Turn on Location Services"/>
+                                <connections>
+                                    <action selector="locationAction:" destination="uU2-Go-LZf" eventType="touchUpInside" id="ICs-1o-f3n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R6u-5W-C8f"/>
@@ -461,7 +464,7 @@ May take up to 10 seconds</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.94499540328979492" green="0.94515722990036011" blue="0.94498521089553833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="BfK-oq-Gbs"/>
                     </view>
                     <connections>
@@ -482,11 +485,14 @@ May take up to 10 seconds</string>
         <scene sceneID="RZB-XC-vzj">
             <objects>
                 <navigationController id="Rij-YM-19q" userLabel="Add Item Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Listing" image="plus" id="tFh-tl-Gf0"/>
+                    <tabBarItem key="tabBarItem" title="Add Listing" image="plus" id="tFh-tl-Gf0">
+                        <color key="badgeColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="juR-kd-2HS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="xUq-wL-JaF" kind="relationship" relationship="rootViewController" id="CwW-mM-6Df"/>
@@ -505,9 +511,12 @@ May take up to 10 seconds</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dev-YA-flU">
-                                <rect key="frame" x="0.0" y="358" width="414" height="416"/>
+                                <rect key="frame" x="0.0" y="364" width="414" height="449"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="1" green="0.83308398719999999" blue="0.12682542199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="1" green="0.83308398719999999" blue="0.12682542199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="optionCell" id="ez6-Lu-tdL" customClass="OptionCell" customModule="TerpMarketplace" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -520,10 +529,11 @@ May take up to 10 seconds</string>
                                                     <rect key="frame" x="15" y="11" width="319" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.1143478975" green="0.269882381" blue="0.32845699789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="dnb-hA-r0u" id="Q4x-od-lM8"/>
@@ -533,7 +543,7 @@ May take up to 10 seconds</string>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Za-gz-urg" userLabel="User Details">
-                                <rect key="frame" x="0.0" y="92" width="414" height="258"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="274"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xw-Ox-bJk">
@@ -544,11 +554,11 @@ May take up to 10 seconds</string>
                                         <rect key="frame" x="149" y="30" width="244" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1143478975" green="0.269882381" blue="0.32845699789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -591,11 +601,12 @@ May take up to 10 seconds</string>
                                                     <rect key="frame" x="20" y="11" width="68" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1143478975" green="0.269882381" blue="0.32845699789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="label" destination="jP5-ND-Sy6" id="UMC-0C-v1g"/>
                                             <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="dVV-gY-GfJ"/>
@@ -625,6 +636,7 @@ May take up to 10 seconds</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5H5-iy-coH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="9q0-Ph-K1g" kind="relationship" relationship="rootViewController" id="Njq-zq-kVm"/>
@@ -708,6 +720,8 @@ May take up to 10 seconds</string>
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.1143478975" green="0.269882381" blue="0.32845699789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="0.83308398719999999" blue="0.12682542199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="NVB-JG-B0i" kind="relationship" relationship="viewControllers" id="dnF-39-uG5"/>
@@ -725,11 +739,14 @@ May take up to 10 seconds</string>
         <scene sceneID="ui4-Wr-S1G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W0S-da-vcq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="chat" id="ett-BB-hdZ">
+                        <color key="badgeColor" red="0.1143478975" green="0.269882381" blue="0.32845699789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o4r-Hj-Pbw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.11434789746999741" green="0.26988238096237183" blue="0.32845699787139893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -753,6 +770,6 @@ May take up to 10 seconds</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MZr-5W-TyD"/>
-        <segue reference="R4J-3n-reU"/>
+        <segue reference="k2n-VK-Hej"/>
     </inferredMetricsTieBreakers>
 </document>
