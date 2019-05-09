@@ -79,7 +79,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         return itemsUserSee.count
     }
     
-    // TODO: change image for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell;
@@ -88,11 +87,23 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         cell.productName.text = item.name!
         cell.productPrice.text = "$\(item.price!)"
         
+        if let uid = Auth.auth().currentUser?.uid {
+            let storageRef = Storage.storage().reference().child("product").child(uid)
+            storageRef.downloadURL(completion: { (url, error) in
+                do {
+                    let data = try Data(contentsOf: url!)
+                    let image = UIImage(data: data as Data)
+                    cell.productImage.image = image;
+                } catch {
+                    print ("Error downloading image from storage")
+                }
+            })
+        }
+        
         userLiked(item: item, cell: cell)
         
         return cell;
     }
-    
     
     // MARK: - Collection View Delegate
     
@@ -240,12 +251,10 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         
         for item in items {
             let coordinate = item.location.split(separator: ",")
-            print(coordinate)
             if coordinate.count == 2 {
                 let latitude = Double(coordinate[0])
                 let longitude = Double(coordinate[1])
-//              print(item.name + "'s latitude:\(latitude!), longitude:\(longitude!)")
-                print("User's latitude:\(userLatitude),longitude:\(userLongitude)")
+                //print("User's latitude:\(userLatitude),longitude:\(userLongitude)")
 
                 
                 // distance formula
@@ -259,7 +268,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 }
             }
         }
-        print(arr)
         itemsFiltered = arr
     }
     
@@ -320,6 +328,20 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     deinit {
         root.removeAllObservers();
     }
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // if segueing to item details, send itemId
+        if segue.identifier == "showDetails" {
+            let destVC = segue.destination as! ItemDetailsViewController
+            //destVC.itemId = ItemCollectionViewCell.itemId
+            // OR in IBAction when clicking on productImage in ItemCollectionViewCell class
+            // self.performSegue(withIdentifier: "showDetails", sender: self)
+            // and send information
+        }
+    }
 
 }
 
@@ -333,6 +355,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var productImage: UIImageView!
     
     var root = Database.database().reference();
     var itemId: String!
@@ -347,7 +370,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             // User already likes -> Unlike
             if likesItem == true {
-                print("setting not pink heart")
                 self.likeButton.setImage(#imageLiteral(resourceName: "nolike"), for: .normal)
                 
                 // Remove from database
@@ -358,7 +380,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 
             // User does not like yet -> Like
             } else {
-                print("Setting pink heart")
                 self.likeButton.setImage(#imageLiteral(resourceName: "like"), for: .normal)
                 
                 // Save in database
@@ -398,4 +419,5 @@ class ItemCollectionViewCell: UICollectionViewCell {
             self.likesItem = false;
         }
     }
+    
 }

@@ -79,6 +79,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="likeButton" destination="I9S-BP-2Me" id="Ivt-1B-8wJ"/>
+                                            <outlet property="productImage" destination="ren-HN-Qr3" id="AiE-8N-0Cv"/>
                                             <outlet property="productName" destination="r9l-Xg-jak" id="omT-Qu-k9z"/>
                                             <outlet property="productPrice" destination="8lT-U3-tEY" id="XIm-Wc-6Fa"/>
                                             <segue destination="XmO-O0-Yhn" kind="show" identifier="showDetails" id="MZr-5W-TyD"/>
@@ -408,7 +409,7 @@ May take up to 10 seconds</string>
         <!--Item Details View Controller-->
         <scene sceneID="vYF-pa-6NZ">
             <objects>
-                <viewController id="XmO-O0-Yhn" userLabel="Item Details View Controller" customClass="ItemDetailsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ItemDetails" storyboardIdentifier="ItemDetails" id="XmO-O0-Yhn" userLabel="Item Details View Controller" customClass="ItemDetailsViewController" customModule="TerpMarketplace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xo7-lg-beE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,7 +752,7 @@ May take up to 10 seconds</string>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dVV-gY-GfJ"/>
+        <segue reference="MZr-5W-TyD"/>
         <segue reference="R4J-3n-reU"/>
     </inferredMetricsTieBreakers>
 </document>
