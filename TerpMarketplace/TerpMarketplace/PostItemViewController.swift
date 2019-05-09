@@ -31,9 +31,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     //let storageRef = Storage.storage.reference()    // need for image
     var imagePicker: UIImagePickerController!
     var sellerId: String = ""
-    var imageUrl: String = ""
+    var imageUrl: URL!
     var chosenImage: UIImage!
     var locationManager = CLLocationManager()
+    var itemId: String = ""
     
     // MARK: - Actions
     @IBAction func nextButtonAction(_ sender: UIButton) {
@@ -42,15 +43,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func postAction(_ sender: UIButton) {
         
-        //guard let image = productImage.image else {return}
-        
-    
-        
-        // retrieve seller ID from firebase
-        //sellerId = Auth.auth().currentUser!.uid
-        
-        
-        
+        sellerId = Auth.auth().currentUser!.uid
         let newItem: [String: Any] = [
             "sellerId": sellerId,
             "name": productName.text!,
@@ -59,10 +52,33 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             "location": productLocation.text!,
             "forSale": true,
             "createdTimestamp": ServerValue.timestamp(),
-            "imageUrl": imageUrl
+            //"imageUrl": imageUrl.absoluteString
         ]
         
         saveNewItem(newItem) { (itemRef) in
+            self.itemId = itemRef.key!
+            guard let image = self.chosenImage else {print("Cannot get image"); return;}
+            
+            self.uploadProductImage(image) { url in
+                if url != nil {
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    
+                    //changeRequest?.displayName = username
+                    changeRequest?.photoURL = url
+                    changeRequest?.commitChanges { error in
+                        
+                        if error == nil{
+                            self.imageUrl = url
+                            self.saveNewItemImage(itemId: itemRef.key!)
+                        } else {
+                            print("Error: \(String(describing: error?.localizedDescription))")
+                        }
+                    }
+                } else {
+                    //error
+                }
+            }
+            
             self.saveNewItemToUser(itemId: itemRef.key!, sellerId: self.sellerId, item: newItem)
         }
         
@@ -71,9 +87,8 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         let ok = UIAlertAction(title: "awesome!!", style: .default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: segueBackToHome)
+        
     }
-    
-    
     
     @IBAction func locationAction(_ sender: UIButton) {
         if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -82,96 +97,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         else {
             locationManager.requestWhenInUseAuthorization()
         }
-    }
-    
-    
-    // MARK: - Functions
-    
-   
-    
-    func segueBackToHome() {
-        self.performSegue(withIdentifier: "segueToMain", sender: self)
-    }
-    
-    // Saves item in /allItems, then returns item reference on completion
-    func saveNewItem(_ newItem: [String: Any], completion: @escaping (DatabaseReference) -> Void) {
-        // Save in all items
-        self.root.child("allItems").childByAutoId().setValue(newItem) { (error, itemRef) in
-            if error != nil {
-                print("Error saving new item")
-            }
-            completion(itemRef)
-        }
-    }
-    
-    func saveNewItemToUser(itemId: String, sellerId: String, item: [String: Any]) {
-        // Save under user
-        self.root.child("users/profile/\(sellerId)/selling/\(itemId)").setValue(item)
-    }
-    
-    @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
-        let alert = UIAlertController.init(title: "Upload Image", message: "", preferredStyle: .alert)
-        let addImage = UIAlertAction(title: "Photo Library", style: .default) {
-            action -> Void in
-            
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alert.addAction(addImage)
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancel)
-        
-        
-        self.present(alert, animated: true, completion: nil)
-        
-        
-        
-        
-        
-        
-    }
-    
-    // informs delegate that picture was chosen, changes picture
-    // Once picture is chosen, picker closes
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            productImage.image = image
-        }
-        
-        guard let image = productImage.image else {return}
-        
-        
-        
-        self.uploadProductImage(image){url in
-            if url != nil {
-                
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                
-                //changeRequest?.displayName = username
-                changeRequest?.photoURL = url
-                changeRequest?.commitChanges { error in
-                    
-                    if error == nil{
-                        
-                        
-                    } else {
-                        
-                        
-                        print("Error: \(String(describing: error?.localizedDescription))")
-                        
-                    }
-                    
-                }
-            } else {
-                
-                //error
-                
-            }
-            
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -204,6 +129,29 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    
+    // MARK: - Helper Functions
+    
+    // Saves item in /allItems, then returns item reference on completion
+    func saveNewItem(_ newItem: [String: Any], completion: @escaping (DatabaseReference) -> Void) {
+        // Save in all items
+        self.root.child("allItems").childByAutoId().setValue(newItem) { (error, itemRef) in
+            if error != nil {
+                print("Error saving new item")
+            }
+            completion(itemRef)
+        }
+    }
+    
+    func saveNewItemImage(itemId: String) {
+        self.root.child("allItems/\(itemId)/imageUrl").setValue(imageUrl.absoluteString)
+    }
+    
+    func saveNewItemToUser(itemId: String, sellerId: String, item: [String: Any]) {
+        // Save under user
+        self.root.child("users/profile/\(sellerId)/selling/\(itemId)").setValue(item)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -219,6 +167,59 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         return true
+    }
+    
+    // informs delegate that picture was chosen, changes picture
+    // Once picture is chosen, picker closes
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            productImage.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func uploadProductImage(_ image:UIImage,completion: @escaping ((_ url:URL?)->())) {
+        
+        let storageRef = Storage.storage().reference().child("product/\(itemId)")
+        print("Trying to get storage ref:")
+        print(storageRef)
+        
+        guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        storageRef.putData(imageData, metadata: metaData) { metaData, error in
+            if error == nil, metaData != nil {
+                
+                storageRef.downloadURL { url, error in
+                    print("Success")
+                    completion(url)
+                    // success!
+                }
+            } else {
+                // failed
+                completion(nil)
+            }
+            
+        }
+    }
+    
+    @objc func tapToAddImage(_ sender: UITapGestureRecognizer) {
+        let alert = UIAlertController.init(title: "Upload Image", message: "", preferredStyle: .alert)
+        let addImage = UIAlertAction(title: "Photo Library", style: .default) {
+            action -> Void in
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        alert.addAction(addImage)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Add Gestures
@@ -242,6 +243,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    func segueBackToHome() {
+        self.performSegue(withIdentifier: "segueToMain", sender: self)
+    }
+    
     // MARK: - user location
     func startTracking() {
         locationManager.startUpdatingLocation()
@@ -262,35 +267,6 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             startTracking()
         }
     }
-    
-    func uploadProductImage(_ image:UIImage,completion: @escaping ((_ url:URL?)->()))
-        
-    {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        
-        
-        let storageRef = Storage.storage().reference().child("product/\(uid)")
-        
-        guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        
-        storageRef.putData(imageData, metadata: metaData) { metaData, error in
-            if error == nil, metaData != nil {
-                
-                storageRef.downloadURL { url, error in
-                    completion(url)
-                    // success!
-                }
-            } else {
-                // failed
-                completion(nil)
-            }
-        
-        }
-}
-    
-
 }
 /*
 let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus();

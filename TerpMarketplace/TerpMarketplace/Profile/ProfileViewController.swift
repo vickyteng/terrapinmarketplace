@@ -36,7 +36,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         retrieveUserInfo();
         getAllItems();
-        
     }
     
     private func retrieveUserInfo() {
@@ -52,7 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    private func getAllItems(){
+    private func getAllItems() {
         root.child("allItems").observe(.value, with: {(snap) in
             
             var newItems = [Item]()

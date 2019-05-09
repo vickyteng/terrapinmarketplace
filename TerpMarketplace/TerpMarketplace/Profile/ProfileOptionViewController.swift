@@ -44,11 +44,7 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
         for i in 0..<self.allItems!.count {
             let curr = self.allItems![i]
             
-            print(likedItemIds)
-            print(curr.itemId)
-            
             if likedItemIds.contains(curr.itemId) {
-                print(curr)
                 getLikedItems.append(curr)
             }
         }
@@ -76,8 +72,8 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = 0
         
+        var rows = 0
         rows = viewingItems.count;
         
         return rows;
@@ -96,14 +92,20 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     // Segue to item details
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetails" {
+            let destVC = segue.destination as! ItemDetailsViewController
+            
+            if let row = tableView.indexPathForSelectedRow?.row {
+                destVC.item = viewingItems[row]
+            } else {
+                print("something went wrong")
+            }
+        }
     }
-    */
-
+    
 }

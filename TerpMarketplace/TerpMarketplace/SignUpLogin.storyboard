@@ -33,7 +33,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-fQ-xTB">
                                                 <rect key="frame" x="67.5" y="0.0" width="61" height="204"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Sign Up"/>
+                                                <state key="normal" title="Sign Up">
+                                                    <color key="titleColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="signUp:" destination="77T-LC-fem" eventType="touchUpInside" id="p4O-E7-vcC"/>
                                                     <segue destination="LlA-bX-2iT" kind="show" identifier="signup" id="RTX-xu-xdZ"/>
@@ -51,7 +53,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PG7-kN-ZHI">
                                                         <rect key="frame" x="77" y="19.5" width="42" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Login"/>
+                                                        <state key="normal" title="Login">
+                                                            <color key="titleColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="login:" destination="77T-LC-fem" eventType="touchUpInside" id="02e-hd-Ee8"/>
                                                             <segue destination="Tfd-Is-94a" kind="show" identifier="login" id="vas-32-z6g"/>
@@ -101,7 +105,7 @@
                                 <rect key="frame" x="187.5" y="493" width="39" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="login">
-                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.83308398723602295" blue="0.12682542204856873" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="Tfd-Is-94a" eventType="touchUpInside" id="ru7-0T-9Mz"/>
@@ -121,7 +125,7 @@
                                         <rect key="frame" x="25" y="17" width="101" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Create Account">
-                                            <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="1" green="0.83308398719999999" blue="0.12682542199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="signUp:" destination="Tfd-Is-94a" eventType="touchUpInside" id="aO4-Hs-P9W"/>
@@ -149,7 +153,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sI6-Cm-RCk" firstAttribute="centerX" secondItem="9k1-Ae-ocZ" secondAttribute="centerX" id="1aG-tD-Brv"/>
                             <constraint firstItem="FBD-58-Sf9" firstAttribute="leading" secondItem="9k1-Ae-ocZ" secondAttribute="leading" constant="35" id="2av-FH-kNg"/>
@@ -227,7 +231,7 @@
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTe-dF-4qd">
                                 <rect key="frame" x="180" y="345" width="54" height="30"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.87210583686828613" green="0.22740110754966736" blue="0.24439877271652222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpAction:" destination="LlA-bX-2iT" eventType="touchUpInside" id="3RQ-k5-pSK"/>
@@ -252,7 +256,7 @@
                                         <rect key="frame" x="64.5" y="17" width="36" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.87210583689999999" green="0.2274011075" blue="0.24439877269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="login:" destination="LlA-bX-2iT" eventType="touchUpInside" id="quz-CS-nw1"/>
@@ -280,7 +284,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.83308398723602295" blue="0.12682542204856873" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NLp-Le-3tT" firstAttribute="centerX" secondItem="umc-IT-yAE" secondAttribute="centerX" id="5iZ-TC-JsD"/>
                             <constraint firstItem="Lva-aK-rPR" firstAttribute="top" secondItem="umc-IT-yAE" secondAttribute="top" constant="45.5" id="Fe5-jn-TYB"/>
@@ -330,7 +334,7 @@
         <image name="addphoto" width="728" height="728"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="br2-1h-eXi"/>
+        <segue reference="RTX-xu-xdZ"/>
         <segue reference="vas-32-z6g"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721238372284C67500A16B35 /* qrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721238362284C67500A16B35 /* qrViewController.swift */; };
+		721238392284D72900A16B35 /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721238382284D72900A16B35 /* webViewController.swift */; };
 		BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */; };
 		BA704AAA226D2BB6003B8A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */; };
 		BA704AE2227CDB13003B8A33 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA704AE1227CDB13003B8A33 /* ColorExtension.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		19924B6710DA0FCA9CBD3528 /* Pods-TerpMarketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.debug.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.debug.xcconfig"; sourceTree = "<group>"; };
 		51D8F7411F3F679933F19A1E /* Pods_TerpMarketplace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TerpMarketplace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		721238362284C67500A16B35 /* qrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrViewController.swift; sourceTree = "<group>"; };
+		721238382284D72900A16B35 /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 		90BFB6E86C147CB633CD99B5 /* Pods-TerpMarketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerpMarketplace.release.xcconfig"; path = "Target Support Files/Pods-TerpMarketplace/Pods-TerpMarketplace.release.xcconfig"; sourceTree = "<group>"; };
 		BA704AA7226D094A003B8A33 /* SearchByLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByLocationViewController.swift; sourceTree = "<group>"; };
 		BA704AA9226D2BB5003B8A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				F1757F6F22693C1F00C7262F /* MessageViewController.swift */,
 				F1AD4F29227B4E9200B24A99 /* Profile */,
 				F1586E5422651B0200992EFC /* Main.storyboard */,
+				721238362284C67500A16B35 /* qrViewController.swift */,
+				721238382284D72900A16B35 /* webViewController.swift */,
 				F1757F6B226939FC00C7262F /* Item.swift */,
 				F1757F7522694CD400C7262F /* User.swift */,
 				F1586E5722651B0400992EFC /* Assets.xcassets */,
@@ -364,6 +370,7 @@
 				BA704AE6227CDB2F003B8A33 /* ViewExtension.swift in Sources */,
 				F1B89075227CBC4F0061ED72 /* CollectionViewExtension.swift in Sources */,
 				F1B89068227CB6A70061ED72 /* DatabaseRepresentation.swift in Sources */,
+				721238392284D72900A16B35 /* webViewController.swift in Sources */,
 				F1757F7022693C1F00C7262F /* MessageViewController.swift in Sources */,
 				BA704AE4227CDB21003B8A33 /* ImageExtension.swift in Sources */,
 				F1757F7222693C6200C7262F /* ProfileViewController.swift in Sources */,
@@ -383,6 +390,7 @@
 				F1AAEF7A2266948200DCFF41 /* SignUpLoginViewController.swift in Sources */,
 				F1757F742269497C00C7262F /* ItemListingCollectionReusableView.swift in Sources */,
 				BA704AA8226D094A003B8A33 /* SearchByLocationViewController.swift in Sources */,
+				721238372284C67500A16B35 /* qrViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ItemDetailsViewController: UIViewController {
 
@@ -18,22 +19,44 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var sellerEmail: UILabel!
     
+    var root = Database.database().reference()
+    var item: Item!             // will be sent thru segue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadItemDetails();
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func loadItemDetails() {
+        if (item.imageUrl != nil) {
+            let storageRef = Storage.storage().reference().child("product").child(item.itemId)
+            storageRef.downloadURL(completion: { (url, error) in
+                do {
+                    let data = try Data(contentsOf: url!)
+                    let image = UIImage(data: data as Data)
+                    
+                    self.itemPhoto.image = image;
+                } catch {
+                    print ("Error downloading image from storage")
+                }
+            })
+        }
+        
+        itemName.text = item.name;
+        itemDescription.text = item.details;
+        itemPrice.text = "$\(item.price ?? 0)";
+        
+        // Get seller information
+        self.root.child("users/profile").child(item.sellerId).observe(.value, with: {(snap) in
+            
+            let user = User(snapshot: snap)
+            
+            self.sellerName.text = user.fName + " " + user.lName;
+            self.sellerEmail.text = user.email;
+        })
+        
     }
-    */
 
 }

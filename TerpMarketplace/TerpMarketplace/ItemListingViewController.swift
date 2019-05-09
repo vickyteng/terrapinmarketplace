@@ -48,6 +48,8 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     var userLongitude : Double = 0.0
     var byLocation : Bool = false
     
+    var itemIdSegue: String = ""            // item id to send when clicking on cell
+    
     var root = Database.database().reference();
     var itemsUserSee : [Item] = []
     var items : [Item] = [];                // all items
@@ -79,7 +81,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         return itemsUserSee.count
     }
     
-    // TODO: change image for each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell;
@@ -88,11 +89,26 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         cell.productName.text = item.name!
         cell.productPrice.text = "$\(item.price!)"
         
+        if (item.imageUrl != nil) {
+            let storageRef = Storage.storage().reference().child("product").child(item.itemId)
+            storageRef.downloadURL(completion: { (url, error) in
+                do {
+                    let data = try Data(contentsOf: url!)
+                    let image = UIImage(data: data as Data)
+                    let size = CGSize.init(width: 200.0, height: 200.0)
+                    let resizedImage = self.resizeImage(image: image!, targetSize: size)
+                    
+                    cell.productImage.image = resizedImage;
+                } catch {
+                    print ("Error downloading image from storage")
+                }
+            })
+        }
+        
         userLiked(item: item, cell: cell)
         
         return cell;
     }
-    
     
     // MARK: - Collection View Delegate
     
@@ -212,6 +228,32 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     
     // MARK: - Helper Functions
     
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out orientation
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
     // Returns true if user likes item
     private func userLiked(item: Item, cell: ItemCollectionViewCell) {
         
@@ -240,12 +282,10 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
         
         for item in items {
             let coordinate = item.location.split(separator: ",")
-            print(coordinate)
             if coordinate.count == 2 {
                 let latitude = Double(coordinate[0])
                 let longitude = Double(coordinate[1])
-//              print(item.name + "'s latitude:\(latitude!), longitude:\(longitude!)")
-                print("User's latitude:\(userLatitude),longitude:\(userLongitude)")
+                //print("User's latitude:\(userLatitude),longitude:\(userLongitude)")
 
                 
                 // distance formula
@@ -259,7 +299,6 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
                 }
             }
         }
-        print(arr)
         itemsFiltered = arr
     }
     
@@ -320,6 +359,27 @@ class ItemListingViewController: UIViewController, UICollectionViewDataSource, U
     deinit {
         root.removeAllObservers();
     }
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // if segueing to item details, send itemId
+        if segue.identifier == "showDetails" {
+            let destVC = segue.destination as! ItemDetailsViewController
+            // OR in IBAction when clicking on productImage in ItemCollectionViewCell class
+            // self.performSegue(withIdentifier: "showDetails", sender: self)
+            // and send information
+            
+            if let indexPath = collectionView.indexPathsForSelectedItems {
+                
+                let row = indexPath[0].row;
+                destVC.item = itemsUserSee[row]
+            } else {
+                print("something went wrong")
+            }
+        }
+    }
 
 }
 
@@ -333,6 +393,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var productImage: UIImageView!
     
     var root = Database.database().reference();
     var itemId: String!
@@ -347,7 +408,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             // User already likes -> Unlike
             if likesItem == true {
-                print("setting not pink heart")
                 self.likeButton.setImage(#imageLiteral(resourceName: "nolike"), for: .normal)
                 
                 // Remove from database
@@ -358,7 +418,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 
             // User does not like yet -> Like
             } else {
-                print("Setting pink heart")
                 self.likeButton.setImage(#imageLiteral(resourceName: "like"), for: .normal)
                 
                 // Save in database
@@ -376,15 +435,15 @@ class ItemCollectionViewCell: UICollectionViewCell {
     // MARK: - Observer
     
     private func searchObserver() {
-        self.root.child("users").observe(.value, with: {(snap) in
-            for userSnaps in snap.children {
-                let u = User(snapshot: userSnaps as! DataSnapshot)
+        if let userId = Auth.auth().currentUser?.uid {
+            self.root.child("users/profile").child(userId).observe(.value, with: {(snap) in
                 
-                // Returns updated item ids that user likes
-                self.itemsId = u.itemIds
-            }
-            
-        })
+                let user = User(snapshot: snap)
+                
+                self.itemsId = user.itemIds
+            })
+        }
+        
     }
     
     // MARK: Helper
@@ -398,4 +457,5 @@ class ItemCollectionViewCell: UICollectionViewCell {
             self.likesItem = false;
         }
     }
+    
 }
