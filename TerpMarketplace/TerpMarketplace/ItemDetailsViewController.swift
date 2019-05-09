@@ -20,57 +20,45 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var sellerEmail: UILabel!
     
     var root = Database.database().reference()
-    var itemId: String!
-    var item: Item!
+    var item: Item!             // will be sent thru segue
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Need to send itemId from previous view
-        getItem(itemId: itemId);
 
+        print(item.itemId)
+        print(item.imageUrl)
         loadItemDetails();
         // Do any additional setup after loading the view.
     }
     
-    private func getItem(itemId: String) {
-        root.child("allItems").observe(.value, with: {(snap) in
-            
-            for itemSnaps in snap.children {
-                let item = Item(snapshot: itemSnaps as! DataSnapshot)
-                
-                let i = itemSnaps as! DataSnapshot // Get id of item
-                if itemId == i.key {
-                    self.item = item;
-                }
-            }
-        })
-    }
-    
     private func loadItemDetails() {
-        if let uid = Auth.auth().currentUser?.uid {
-            let storageRef = Storage.storage().reference().child("product").child(uid)
+        if (item.imageUrl != nil) {
+            let storageRef = Storage.storage().reference().child("product").child(item.itemId)
             storageRef.downloadURL(completion: { (url, error) in
                 do {
                     let data = try Data(contentsOf: url!)
                     let image = UIImage(data: data as Data)
+                    
                     self.itemPhoto.image = image;
                 } catch {
                     print ("Error downloading image from storage")
                 }
             })
         }
+        
+        itemName.text = item.name;
+        itemDescription.text = item.details;
+        itemPrice.text = "$\(item.price ?? 0)";
+        
+        // Get seller information
+        self.root.child("users/profile").child(item.sellerId).observe(.value, with: {(snap) in
+            
+            let user = User(snapshot: snap)
+            
+            self.sellerName.text = user.fName + " " + user.lName;
+            self.sellerEmail.text = user.email;
+        })
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
