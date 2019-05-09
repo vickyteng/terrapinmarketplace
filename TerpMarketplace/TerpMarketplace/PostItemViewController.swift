@@ -34,6 +34,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     var imageUrl: URL!
     var chosenImage: UIImage!
     var locationManager = CLLocationManager()
+    var itemId: String = ""
     
     // MARK: - Actions
     @IBAction func nextButtonAction(_ sender: UIButton) {
@@ -42,30 +43,51 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func postAction(_ sender: UIButton) {
         
-        // retrieve seller ID from firebase
-        //sellerId = Auth.auth().currentUser!.uid
-        guard let image = chosenImage else {print("Cannot get image"); return;}
+        sellerId = Auth.auth().currentUser!.uid
+        let newItem: [String: Any] = [
+            "sellerId": sellerId,
+            "name": productName.text!,
+            "price": productPrice.text!,
+            "details": productDescription.text!,
+            "location": productLocation.text!,
+            "forSale": true,
+            "createdTimestamp": ServerValue.timestamp(),
+            //"imageUrl": imageUrl.absoluteString
+        ]
         
-        self.uploadProductImage(image) { url in
-            if url != nil {
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                
-                //changeRequest?.displayName = username
-                changeRequest?.photoURL = url
-                changeRequest?.commitChanges { error in
+        saveNewItem(newItem) { (itemRef) in
+            self.itemId = itemRef.key!
+            guard let image = self.chosenImage else {print("Cannot get image"); return;}
+            
+            self.uploadProductImage(image) { url in
+                if url != nil {
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     
-                    if error == nil{
-                        self.imageUrl = url
-                        self.saveItemToDB()
-                    } else {
-                        print("Error: \(String(describing: error?.localizedDescription))")
-                        self.saveItemToDB()
+                    //changeRequest?.displayName = username
+                    changeRequest?.photoURL = url
+                    changeRequest?.commitChanges { error in
+                        
+                        if error == nil{
+                            self.imageUrl = url
+                            self.saveNewItemImage(itemId: itemRef.key!)
+                        } else {
+                            print("Error: \(String(describing: error?.localizedDescription))")
+                        }
                     }
+                } else {
+                    //error
                 }
-            } else {
-                //error
             }
+            
+            self.saveNewItemToUser(itemId: itemRef.key!, sellerId: self.sellerId, item: newItem)
         }
+        
+        // Segue back
+        let alert = UIAlertController.init(title: "Item Posted", message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "awesome!!", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: segueBackToHome)
+        
     }
     
     @IBAction func locationAction(_ sender: UIButton) {
@@ -105,36 +127,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
         // location manager setup
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        sellerId = (Auth.auth().currentUser?.uid)!
     }
     
     
     // MARK: - Helper Functions
-    
-    func saveItemToDB() {
-        
-        let newItem: [String: Any] = [
-            "sellerId": sellerId,
-            "name": productName.text!,
-            "price": productPrice.text!,
-            "details": productDescription.text!,
-            "location": productLocation.text!,
-            "forSale": true,
-            "createdTimestamp": ServerValue.timestamp(),
-            "imageUrl": imageUrl.absoluteString
-        ]
-        
-        saveNewItem(newItem) { (itemRef) in
-            self.saveNewItemToUser(itemId: itemRef.key!, sellerId: self.sellerId, item: newItem)
-        }
-        
-        // Segue back
-        let alert = UIAlertController.init(title: "Item Posted", message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "awesome!!", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: segueBackToHome)
-    }
     
     // Saves item in /allItems, then returns item reference on completion
     func saveNewItem(_ newItem: [String: Any], completion: @escaping (DatabaseReference) -> Void) {
@@ -145,6 +141,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             completion(itemRef)
         }
+    }
+    
+    func saveNewItemImage(itemId: String) {
+        self.root.child("allItems/\(itemId)/imageUrl").setValue(imageUrl.absoluteString)
     }
     
     func saveNewItemToUser(itemId: String, sellerId: String, item: [String: Any]) {
@@ -182,9 +182,10 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     func uploadProductImage(_ image:UIImage,completion: @escaping ((_ url:URL?)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
         
-        let storageRef = Storage.storage().reference().child("product/\(uid)")
+        let storageRef = Storage.storage().reference().child("product/\(itemId)")
+        print("Trying to get storage ref:")
+        print(storageRef)
         
         guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
         let metaData = StorageMetadata()
@@ -194,6 +195,7 @@ class PostItemViewController: UIViewController, UIImagePickerControllerDelegate,
             if error == nil, metaData != nil {
                 
                 storageRef.downloadURL { url, error in
+                    print("Success")
                     completion(url)
                     // success!
                 }
