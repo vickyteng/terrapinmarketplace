@@ -690,6 +690,11 @@ May take up to 10 seconds</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EK7-Wc-1m7">
+                                <rect key="frame" x="0.0" y="83" width="414" height="730"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -700,13 +705,13 @@ May take up to 10 seconds</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Suggested" image="first" id="cPa-gy-q4n" userLabel="Suggested"/>
                     <connections>
-                        <outlet property="view" destination="QS5-Rx-YEW" id="jeq-Du-dNG"/>
+                        <outlet property="view" destination="EK7-Wc-1m7" id="jkP-tl-veY"/>
                         <segue destination="c30-ey-SkJ" kind="show" identifier="link" id="H4s-bd-TQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-990" y="-576"/>
+            <point key="canvasLocation" x="-991.304347826087" y="-576.5625"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="jCh-c5-cTr">
@@ -715,16 +720,24 @@ May take up to 10 seconds</string>
                     <view key="view" contentMode="scaleToFill" id="qWH-8J-3et">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3g-uB-grf">
+                                <rect key="frame" x="0.0" y="73" width="414" height="758"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="NUM-oN-yi7"/>
                     </view>
                     <connections>
                         <outlet property="view" destination="qWH-8J-3et" id="4Qo-MC-lzW"/>
+                        <outlet property="webView" destination="E3g-uB-grf" id="6nf-WC-EYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeQ-SJ-1Jf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1012" y="211"/>
+            <point key="canvasLocation" x="-1013.0434782608696" y="210.9375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
