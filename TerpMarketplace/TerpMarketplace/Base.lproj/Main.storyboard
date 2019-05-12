@@ -456,11 +456,26 @@ May take up to 10 seconds</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-ss-RSs" userLabel="Price">
-                                <rect key="frame" x="355" y="467" width="39" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-ss-RSs" userLabel="Price">
+                                <rect key="frame" x="301" y="467" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.1491339445" green="0.45911326139999997" blue="0.1208708951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2j6-oa-4Da">
+                                <rect key="frame" x="164" y="705" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Mark as sold"/>
+                                <connections>
+                                    <action selector="markItemSold:" destination="XmO-O0-Yhn" eventType="touchUpInside" id="xlP-am-nc7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pB-Ft-ekY">
+                                <rect key="frame" x="20" y="760" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.1491339445" green="0.45911326139999997" blue="0.1208708951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -472,6 +487,8 @@ May take up to 10 seconds</string>
                         <outlet property="itemName" destination="gmi-zc-Pau" id="mMf-6F-W2z"/>
                         <outlet property="itemPhoto" destination="tty-D6-kur" id="ugg-RR-S7c"/>
                         <outlet property="itemPrice" destination="rgQ-ss-RSs" id="cVh-sb-Mg9"/>
+                        <outlet property="itemSoldButton" destination="2j6-oa-4Da" id="1g2-UA-tj7"/>
+                        <outlet property="markSoldLabel" destination="5pB-Ft-ekY" id="P4e-Sk-lBf"/>
                         <outlet property="navBar" destination="eqD-Rv-iwn" id="KcD-Ub-DS4"/>
                         <outlet property="sellerEmail" destination="nUa-4h-7ba" id="4dQ-OP-xBq"/>
                         <outlet property="sellerName" destination="jIE-rW-1Vg" id="hfo-K7-Llv"/>
@@ -501,6 +518,14 @@ May take up to 10 seconds</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8Q-Y4-kS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-215" y="-576"/>
+        </scene>
+        <!--SignUpLogin-->
+        <scene sceneID="rxl-DS-lqR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUpLogin" id="gr2-yw-vBV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mSj-Ls-g68" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="-73"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="8XS-BH-C5v">
@@ -565,8 +590,23 @@ May take up to 10 seconds</string>
                         <viewLayoutGuide key="safeArea" id="kmT-o2-vIf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="user_male" id="oZO-Ic-svu"/>
-                    <navigationItem key="navigationItem" id="YbP-pK-MXK"/>
+                    <navigationItem key="navigationItem" id="YbP-pK-MXK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="F4n-Qf-R7i">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6aM-qH-gyz" userLabel="Log Out">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOutAction:" destination="9q0-Ph-K1g" eventType="touchUpInside" id="Vgs-M6-2By"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <segue destination="gr2-yw-vBV" kind="presentation" identifier="segueToSignUp" id="Po1-Rh-gKX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="logOut" destination="F4n-Qf-R7i" id="TyA-zc-qAR"/>
                         <outlet property="nameLabel" destination="ako-3D-iqd" id="hsE-8L-tRV"/>
                         <outlet property="profileOptionTableView" destination="dev-YA-flU" id="vBj-Ta-x7c"/>
                         <outlet property="profilePicture" destination="8Xw-Ox-bJk" id="X1v-e4-hFW"/>
@@ -725,7 +765,6 @@ May take up to 10 seconds</string>
                     </tabBar>
                     <connections>
                         <segue destination="NVB-JG-B0i" kind="relationship" relationship="viewControllers" id="dnF-39-uG5"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Rij-YM-19q" kind="relationship" relationship="viewControllers" id="7DW-gz-dd5"/>
                         <segue destination="W0S-da-vcq" kind="relationship" relationship="viewControllers" id="Vzc-8m-dat"/>
                         <segue destination="FkD-hW-GER" kind="relationship" relationship="viewControllers" id="aT4-eu-Fed"/>

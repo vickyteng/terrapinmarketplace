@@ -17,8 +17,7 @@ class Item {
     var name: String!
     var price: Int!
     var details: String!
-    //var image: UIImage
-    var forSale: Bool! = true       // false if sold
+    var forSale: Bool!       // false if sold
     var location: String!
     var ref: DatabaseReference
     var imageUrl: String!
@@ -33,6 +32,7 @@ class Item {
         sellerId = data["sellerId"] as? String
         location = data["location"] as? String
         imageUrl = data["imageUrl"] as? String
+        forSale = true;
     
         ref = snapshot.ref;
     }
