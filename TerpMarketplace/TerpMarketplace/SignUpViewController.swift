@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Photos
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,9 +23,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tapToChangeProfileButton: UIButton!
     
     @IBAction func profileChange(_ sender: UIButton) {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus();
+        switch photoAuthorizationStatus {
+            case .authorized: print("Access is granted by user")
+                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.allowsEditing = true
+                self.present(self.imagePicker, animated: true, completion: nil)
+            case .notDetermined: PHPhotoLibrary.requestAuthorization({ (newStatus) in
+                
+                if newStatus == PHAuthorizationStatus.authorized {
+                    self.imagePicker.sourceType = .photoLibrary
+                    self.imagePicker.allowsEditing = true
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+            })
+            case .restricted: print("User do not have access to photo album.")
+            case .denied: print("User has denied the permission.")
+        }
     }
     
     let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))

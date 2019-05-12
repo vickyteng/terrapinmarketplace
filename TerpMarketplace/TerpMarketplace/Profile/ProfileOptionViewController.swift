@@ -34,6 +34,8 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
             retrieveLikedItemsInfo()
         } else if optionToView! == "Selling" {
             retrieveSellingItemsInfo()
+        } else if optionToView! == "Sold" {
+            retrieveSoldItemsInfo()
         }
     }
     
@@ -65,6 +67,21 @@ class ProfileOptionViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         self.viewingItems = getSellingItems
+    }
+    
+    private func retrieveSoldItemsInfo() {
+        var getSoldItems: [Item] = []
+        let sellingItemIds = user.sellingItemIds;
+        
+        for i in 0..<allItems.count {
+            let curr = allItems[i]
+            
+            if sellingItemIds.contains(curr.itemId) && curr.forSale == false {
+                getSoldItems.append(curr)
+            }
+        }
+        
+        self.viewingItems = getSoldItems
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

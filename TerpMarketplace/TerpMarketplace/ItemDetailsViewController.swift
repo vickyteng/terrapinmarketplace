@@ -18,6 +18,16 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var sellerEmail: UILabel!
+    @IBOutlet weak var itemSoldButton: UIButton!
+    @IBAction func markItemSold(_ sender: UIButton) {
+        markSoldLabel.text = "Item marked as sold"
+        
+        if let itemId = item?.itemId {
+            self.root.child("allItems/\(itemId)/forSale").setValue("false");
+        }
+    }
+    
+    @IBOutlet weak var markSoldLabel: UILabel!
     
     var root = Database.database().reference()
     var item: Item!             // will be sent thru segue
@@ -25,6 +35,7 @@ class ItemDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        markSoldLabel.text = "";
         loadItemDetails();
         // Do any additional setup after loading the view.
     }

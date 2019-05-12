@@ -16,6 +16,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileOptionTableView: UITableView!
     
+    @IBOutlet weak var logOut: UIBarButtonItem!
+    
+    @IBAction func logOutAction(_ sender: UIButton) {
+        print("button pressed");
+        do {
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "segueToSignUp", sender: self)
+        } catch {
+            print("Error signing out")
+        }
+    }
+    
     let root = Database.database().reference();
     var currUser: User!
     var allItems: [Item]!
